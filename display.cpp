@@ -21,11 +21,11 @@ void display()
             equation=removespaces(equation);
             cout<<equation<<endl;
            cout<<"Answer: ";
-        //    bool uv_recognizer=check_uv_function(equation);
-        //    if(uv_recognizer==true)
-        //    {
-        //         answer+=as_uv_function(equation);
-        //    }
+           bool uv_recognizer=check_uv_function(equation);
+           if(uv_recognizer==true)
+           {
+                answer+=as_uv_function(equation);
+           }
         }
 }
 string removespaces(string equation)

@@ -1,4 +1,5 @@
 #include<iostream>
+#include"header.h"
 using namespace std;
 string ans8="";
 bool check_uv_function(string equation)
@@ -49,17 +50,17 @@ string as_uv_function(string equation)
     second_part_v[k]='\0';
     cout<<"u= "<<first_part_u<<endl;
     cout<<"v= "<<second_part_v<<endl;
-    bool trigonometry_recognizer_second=check_trigonometry_function(second_part_v);
-    if(trigonometry_recognizer_second==true)
-    {
-         derivative_sign_v=derivative_sign_of_trigonometry();
-         if(derivative_sign_v==2 || derivative_sign_v==4 || derivative_sign_v==6)
-         {
-             if(as_trigonometry_function(second_part_v)!="0")
-             {
-                 ans8+="-";
-             }
-         }
-    }
+    // bool trigonometry_recognizer_second=check_trigonometry_function(second_part_v);
+    // if(trigonometry_recognizer_second==true)
+    // {
+    //      derivative_sign_v=derivative_sign_of_trigonometry();
+    //      if(derivative_sign_v==2 || derivative_sign_v==4 || derivative_sign_v==6)
+    //      {
+    //          if(as_trigonometry_function(second_part_v)!="0")
+    //          {
+    //              ans8+="-";
+    //          }
+    //      }
+    // }
 }
 

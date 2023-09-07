@@ -8,5 +8,7 @@ using namespace std;
 
 void display();
 string removespaces(string equation);
+bool check_uv_function(string equation);
+string as_uv_function(string equation);
 
 #endif
