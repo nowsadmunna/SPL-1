@@ -8,11 +8,11 @@ bool check_trigonometry_funtion(string equation)
    int i;
    for(i=0;equation[i]!='\0';i++)
    {
-       if(equation[i]=='l' && equation[i+1]='n')
+       if(equation[i]=='l' && equation[i+1]=='n')
        {
            ln_count=i;
        }
-       else if(equation[i]=='s' && equation[i+1]='q' && equation[i+2]='r' && equation[i+3]='t')
+       else if(equation[i]=='s' && equation[i+1]=='q' && equation[i+2]=='r' && equation[i+3]=='t')
        {
            root_count=i;
        }
@@ -47,7 +47,7 @@ bool check_trigonometry_funtion(string equation)
            which_trigonometry=5;
            return true;
        }
-       else if(equation[i]=='c' && equation[i+1]='o' && equation[i+2] =='s' && equation[i+3]=='e' && equation[i+4]=='c')
+       else if(equation[i]=='c' && equation[i+1]=='o' && equation[i+2] =='s' && equation[i+3]=='e' && equation[i+4]=='c')
        {
            which_trigonometry=2;
            return true;
@@ -57,7 +57,7 @@ bool check_trigonometry_funtion(string equation)
            which_trigonometry=4;
            return true;
        }
-       else if(equation[i]=='c' equation[i+1]=='o' && equation[i+2]=='t')
+       else if(equation[i]=='c' && equation[i+1]=='o' && equation[i+2]=='t')
        {
            which_trigonometry=6;
            return true;
@@ -72,6 +72,7 @@ int derivative_sign_of_trigonometry()
 {
     return which_trigonometry;
 }
+
 string as_trigonometry_function(string equation)
 {
     char trigonometry_chain[500];
@@ -120,19 +121,20 @@ string as_trigonometry_function(string equation)
             trigonometry_chain[j]='\0';
         }
     }
-    for(i=0;i<strlen(trigonometry_chain);i++)
-    {
-        if(trigonometry_chain[i]=='(')
-        {
-            count_for_bracket++;
-        }
-        else
-        {
-            break;
-        }
-    }
-    for(j=i;j<strlen(trigonometry_chain);j++)
-    {
-        trigonometry_chain[j-count_for_bracket]=trigonometry_chain[j];
-    }
+    cout<<trigonometry_chain<<endl;
+    // for(i=0;i<strlen(trigonometry_chain);i++)
+    // {
+    //     if(trigonometry_chain[i]=='(')
+    //     {
+    //         count_for_bracket++;
+    //     }
+    //     else
+    //     {
+    //         break;
+    //     }
+    // }
+    // for(j=i;j<strlen(trigonometry_chain);j++)
+    // {
+    //     trigonometry_chain[j-count_for_bracket]=trigonometry_chain[j];
+    // }
 }

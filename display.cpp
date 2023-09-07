@@ -7,7 +7,8 @@ string answer="";
 void display()
 {
         cout<<"Enter the equation that you want to differentiate"<<endl;
-        cout<<"1.Enter an equation"<<endl;
+        cout<<"Option:"<<endl;
+        cout<<"1.Input Equation"<<endl;
         cout<<"2.Exit"<<endl;
         cout<<"Enter your choice: ";
         int choice;
