@@ -1,4 +1,5 @@
 #include<iostream>
+#include"header.h"
 using namespace std;
 int which_trigonometry=0;
 bool check_trigonometry_funtion(string equation)
@@ -7,11 +8,11 @@ bool check_trigonometry_funtion(string equation)
    int i;
    for(i=0;equation[i]!='\0';i++)
    {
-       if(equation[i]=='l')
+       if(equation[i]=='l' && equation[i+1]='n')
        {
            ln_count=i;
        }
-       else if(equation[i]=='s' && equation[i+1]='q')
+       else if(equation[i]=='s' && equation[i+1]='q' && equation[i+2]='r' && equation[i+3]='t')
        {
            root_count=i;
        }
