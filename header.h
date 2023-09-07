@@ -13,5 +13,10 @@ string as_uv_function(string equation);
 bool check_trigonometry_funtion(string equation);
 int derivative_sign_of_trigonometry();
 string as_trigonometry_function(string equation);
-
+int char_type(char c);
+bool an_alphabet(char c);
+bool a_digit(char c);
+bool an_operator(char c);
+bool a_power(char c);
+bool a_bracket(char c);
 #endif
