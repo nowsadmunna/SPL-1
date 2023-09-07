@@ -1,5 +1,5 @@
 #include<iostream>
-#include "display.cpp"
+#include "header.h"
 using namespace std;
 
 
