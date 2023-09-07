@@ -1,3 +1,4 @@
+#include<iostream>
 #include "header.h"
 using namespace std;
 int char_type(char c)
@@ -40,7 +41,7 @@ bool an_alphabet(char c)
 }
 bool a_digit(char c)
 {
-    if(c>='0' && s<='9')
+    if(c>='0' && c<='9')
     {
         return true;
     }
