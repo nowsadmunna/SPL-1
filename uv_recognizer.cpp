@@ -52,18 +52,18 @@ string as_uv_function(string equation)
     cout<<"v= "<<second_part_v<<endl;
     bool trigonometry_recognizer_second=check_trigonometry_funtion(second_part_v);
     cout<<trigonometry_recognizer_second<<endl;
+    
     if(trigonometry_recognizer_second==true)
     {
-        cout<<"check"<<endl;
          derivative_sign_v=derivative_sign_of_trigonometry();
-         cout<<derivative_sign_v;
-        //  if(derivative_sign_v==2 || derivative_sign_v==4 || derivative_sign_v==6)
-        //  {
-        //      if(as_trigonometry_function(second_part_v)!="0")
-        //      {
-        //          ans8+="-";
-        //      }
-        //  }
+         cout<<derivative_sign_v<<endl;
+         if(derivative_sign_v==2 || derivative_sign_v==4 || derivative_sign_v==6)
+         {
+             if(as_trigonometry_function(second_part_v)!="0")
+             {
+                 ans8+="-";
+             }
+         }
     }
 }
 
