@@ -57,13 +57,14 @@ string as_uv_function(string equation)
     {
          derivative_sign_v=derivative_sign_of_trigonometry();
          cout<<derivative_sign_v<<endl;
-         if(derivative_sign_v==2 || derivative_sign_v==4 || derivative_sign_v==6)
-         {
-             if(as_trigonometry_function(second_part_v)!="0")
-             {
-                 ans8+="-";
-             }
-         }
+         cout<<as_trigonometry_function(second_part_v);
+        //  if(derivative_sign_v==2 || derivative_sign_v==4 || derivative_sign_v==6)
+        //  {
+        //      if(as_trigonometry_function(second_part_v)!="0")
+        //      {
+        //          ans8+="-";
+        //      }
+        //  }
     }
 }
 

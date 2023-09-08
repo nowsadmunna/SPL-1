@@ -75,6 +75,7 @@ int derivative_sign_of_trigonometry()
 
 string as_trigonometry_function(string equation)
 {
+    string answer="";
     char trigonometry_chain[500];
     int i,j=0,k;
     char trigonometry_variable;
@@ -121,20 +122,27 @@ string as_trigonometry_function(string equation)
             trigonometry_chain[j]='\0';
         }
     }
-    cout<<trigonometry_chain<<endl;
-    // for(i=0;i<strlen(trigonometry_chain);i++)
-    // {
-    //     if(trigonometry_chain[i]=='(')
-    //     {
-    //         count_for_bracket++;
-    //     }
-    //     else
-    //     {
-    //         break;
-    //     }
-    // }
-    // for(j=i;j<strlen(trigonometry_chain);j++)
-    // {
-    //     trigonometry_chain[j-count_for_bracket]=trigonometry_chain[j];
-    // }
+    for(i=0;i<strlen(trigonometry_chain);i++)
+    {
+        if(trigonometry_chain[i]=='(')
+        {
+            count_for_bracket++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    for(j=i;j<strlen(trigonometry_chain);j++)
+    {
+        trigonometry_chain[j-count_for_bracket]=trigonometry_chain[j];
+    }
+    cout<<"d/dx("<<trigonometry_chain<<"*";
+    if(derivative_sign_of_trigonometry==2 || derivative_sign_of_trigonometry==4 || derivative_sign_of_trigonometry==6)
+    {
+       if(k==1)
+       {
+
+       }
+    }
 }
