@@ -145,7 +145,48 @@ string partitioning_equation(string equation)
             {
                 coefficient=1401;
             }
-            else if
+            else if(equation[i-2]!='^' && (equation[i-1]=='+' || equation[i-1]=='-') && (equation[i+1]=='(' || equation[i+1]==')'))
+            {
+                coefficient=1402;
+                variable=equation[i];
+            }
+            else if((equation[i-1]=='(' || equation[i-1]==')') && (equation[i+1]=='+' || equation[i+1]=='-'))
+            {
+                coefficient=1403;
+                variable=equation[i];
+            }
+            else if((equation[i-1]=='(' || equation[i-1]==')')&&(equation[i+1]=='(' || equation[i+1]==')'))
+            {
+                coefficient=1404;
+                variable=equation[i];
+            }
+        }
+        else if(get_token[i]==3)
+        {
+            if(equation[i]=='*')
+            {
+                continue;
+            }
+            else if(equation[i-1]=='(')
+            {
+                continue;
+            }
+            else if(equation[i-1]!='^')
+            {
+                sign=equation[i];
+            }
+            else 
+            {
+                continue;
+            }
+        }
+        else if(get_token[i]==4)
+        {
+            if(get_token[i+1]==2)
+            {
+                power=(int)(equation[i+1])-48;
+            }
+            
         }
     }
 }
