@@ -2,6 +2,7 @@
 #include"header.h"
 using namespace std;
 int which_trigonometry=0;
+int kt=0;
 bool check_trigonometry_funtion(string equation)
 {
    int ln_count=500,trigonometry_count=500,root_count=500;
@@ -70,6 +71,7 @@ bool check_trigonometry_funtion(string equation)
 }
 int derivative_sign_of_trigonometry()
 {
+    kt++;
     return which_trigonometry;
 }
 
@@ -140,9 +142,19 @@ string as_trigonometry_function(string equation)
     cout<<"d/dx("<<trigonometry_chain<<"*";
     if(derivative_sign_of_trigonometry==2 || derivative_sign_of_trigonometry==4 || derivative_sign_of_trigonometry==6)
     {
-       if(k==1)
+       if(kt==0)
        {
-
+           answer+="-";
+           if(k!=1)
+           {
+            cout<<"-";
+           }
        }
+       
+    }
+    if(k!=1)
+    {
+        answer+="(";
+        answer+=
     }
 }

@@ -19,4 +19,5 @@ bool a_digit(char c);
 bool an_operator(char c);
 bool a_power(char c);
 bool a_bracket(char c);
+string partitioning_equation(string equation);
 #endif

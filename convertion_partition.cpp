@@ -1,6 +1,7 @@
 #include<iostream>
 #include "header.h"
 using namespace std;
+int get_token[500];
 int char_type(char c)
 {
     if(an_alphabet(c))
@@ -82,5 +83,70 @@ bool a_bracket(char c)
         {
             return false;
         }
+}
+string partitioning_equation(string equation)
+{
+    int i;
+    for(i=0;equation[i]!='\0';i++)
+    {
+         if(an_alphabet(equation[i]))
+         {
+            get_token[i]=1;
+         }
+         else if(a_digit(equation[i]))
+         {
+            get_token[i]=2;
+         }
+         else if(an_operator(equation[i]))
+         {
+            get_token[i]=3;
+         }
+         else if(a_power(equation[i]))
+         {
+            get_token[i]=4;
+         }
+         else if(a_bracket(equation[i]))
+         {
+            get_token[i]=5;
+         }
+    }
+    string answer="";
+    char variable,sign='\0';
+    int power=1,coefficient=1;
+    for(i=0;equation[i]!='\0';i++)
+    {
+        if(get_token[i]==1)
+        {
+            variable=equation[i];
+            if(get_token[i+1]!=4)
+            {
+                power=1;
+            }
+            if(equation[i-1]=='+')
+            {
+                coefficient=1;
+            }
+            else if(equation[i-1]=='-')
+            {
+                coefficient=-1;
+            }
+        }
+        else if(get_token[i]==2)
+        {
+            if(equation[i+1]=='*')
+            {
+                coefficient=(int)(equation[i])-48;
+            }
+            if(equation[i-1]=='-' && equation[i-2]=='(')
+            {
+                coefficient=coefficient*(-1);
+            }
+            if(equation[i-2]!='^' && (equation[i-1]=='+' || equation[i-1]=='-') && (equation[i+1]=='+' || equation[i+1]=='-'))
+            {
+                coefficient=1401;
+            }
+            else if
+        }
+    }
 }
 
