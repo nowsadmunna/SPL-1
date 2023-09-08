@@ -186,7 +186,16 @@ string partitioning_equation(string equation)
             {
                 power=(int)(equation[i+1])-48;
             }
-            
+            else if(equation[i+1]=='-')
+            {
+                power=(int)(equation[i+2])-48;
+                power=power*(-1);
+            }
+
+        }
+        if(sign=='+' || sign=='-' || equation[i]==')')
+        {
+            answer+=
         }
     }
 }
