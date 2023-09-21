@@ -40,50 +40,24 @@ int check_u_or_uplusv(string equation)
     }
     return plus_or_minus_count;
 }
-void uplusv(string equ, char caa)
+void show_as_uplusv(string equation)
 {
-    //etar kaj holo + ar - ar vittite partiton kore d/dx(u) akare dekhano
-    int x13=0;
-    char s13='\0';
-    string temp_equ = "";
-    for(int i=0; i<equ.size(); i++)
+    string temporary_u_or_v="";
+    int i;
+    for(i=0;i<equation.size();i++)
     {
-        x13 = char_type(equ[i]);
-        if(x13==3)
+        if(equation[i]=='('|| equation[i]==')')
         {
-            if(equ[i-1]=='(')
-                continue;
-            else if(equ[i]=='*')
-            {
-                temp_equ += equ[i];
-                continue;
-            }
-            else if(equ[i-1]!='^')
-                s13 = equ[i];
-            else {
-                temp_equ += equ[i];
-                continue;
-            }
-        }
-        if(equ[i]=='(')
             continue;
-        if(s13=='\0')
-            temp_equ += equ[i];
-
-        if(s13=='+' || s13=='-' || equ[i]==')')
-        {
-            cout<<"d/d"<<caa<<"(";
-            if(equ[i]==')')
-                cout<<temp_equ;
-            else
-                cout<<temp_equ<<") "<<s13<<" ";
-            temp_equ = "";
         }
-         s13 = '\0';
+        
+        if(equation[i]=='+' || equation[i]=='-')
+        {
+            cout<<"d/dx("<<temporary_u_or_v<<")"<<equation[i];
+            temporary_u_or_v="";
+        }
     }
-    cout<<"\n\n\t\t\t    =  ";
 }
-
 // void display()
 // {
 //         cout<<"Enter the equation that you want to differentiate"<<endl;

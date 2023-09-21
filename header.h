@@ -22,5 +22,5 @@ bool a_bracket(char c);
 string partitioning_equation(string equation);
 void as_algebric(string equation);
 int check_u_or_uplusv(string equation);
-void uplusv(string equ, char caa);
+void show_as_uplusv(string equation);
 #endif
