@@ -195,7 +195,7 @@ string partitioning_equation(string equation)
         }
         if(sign=='+' || sign=='-' || equation[i]==')')
         {
-            answer+=
+            
         }
     }
 }
