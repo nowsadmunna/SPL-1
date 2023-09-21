@@ -4,6 +4,25 @@ using namespace std;
 
 string answer="";
 void as_algebric(string equation)
+{
+
+}
+int check_u_or_uplusv(string equation)
+{
+    int plus_or_minus_count=0;
+    for(int i=0;i<equation.size();i++)
+    {
+            if(equation[i]=='+' || equation[i]=='-')
+            {
+                plus_or_minus_count++;
+            }
+            else 
+            {
+                continue;
+            }
+    }
+    return plus_or_minus_count;
+}
 
 void display()
 {
