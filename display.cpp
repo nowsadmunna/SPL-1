@@ -3,6 +3,7 @@
 using namespace std;
 
 string answer="";
+void as_algebric(string equation)
 
 void display()
 {
