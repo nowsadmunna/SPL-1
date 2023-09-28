@@ -24,16 +24,20 @@ void as_algebric(string equation)
 
     }
 }
+//-5*x+6*x//-5*x
 int check_u_or_uplusv(string equation)
 {
     int plus_or_minus_count=0;
     for(int i=0;i<equation.size();i++)
     {
-            if(equation[i]=='+' || equation[i]=='-')
+
+        if(equation[i]=='+' || equation[i]=='-')
             {
+                if(equation[i-1]=='(')
+                continue;
                 plus_or_minus_count++;
             }
-            else 
+        else 
             {
                 continue;
             }
@@ -48,7 +52,7 @@ void show_as_uplusv(string equation)
     int i;
     for(i=0;i<equation.size();i++)
     {
-        if(equation[i]=='('|| equation[i]==')')
+        if(equation[i]=='(')
         {
             continue;
         }
@@ -56,6 +60,7 @@ void show_as_uplusv(string equation)
         {
             if(equation[i-1]=='(')
             {
+                temporary_u_or_v+=equation[i];
                 continue;
             }
            else if(equation[i-1]!='^')
@@ -68,7 +73,23 @@ void show_as_uplusv(string equation)
             continue;
            }
         }
-        if
+        if(get_symbol=='\0')
+        {
+            temporary_u_or_v+=equation[i];
+        }
+        if(get_symbol=='+' || get_symbol=='-')
+        {
+            cout<<"d/dx("<<temporary_u_or_v<<")"<<get_symbol;
+            temporary_u_or_v="";
+            get_symbol='\0';
+            continue;
+        }
+        if(i==equation.size()-1 && get_symbol='\0')
+        {
+            cout<<"d/dx("<<temporary_u_or_v<<")"<<endl;
+            temporary_u_or_v="";
+            get_symbol='\0';
+        }
     }
 }
 // void display()
