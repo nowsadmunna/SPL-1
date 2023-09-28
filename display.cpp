@@ -14,15 +14,20 @@ void as_algebric(string equation)
     else 
     {
         cout<<"The formula for solving this equation: "<<endl;
-        cout<<"                                      d/dx(u+v)= d/dx(u)+d/dx(v)"<<endl;                                      
+        cout<<"                                      d/dx(u+v)= d/dx(u)+d/dx(v)"<<endl;
+        cout<<"The power formula is also needed: "<<endl;
+        cout<<"                                  d/dx(x^n)= nx^(n-1)"<<endl;                                      
     }
     cout<<"Given Equation: "<<endl;
     cout<<"f(x)= "<<equation<<endl;
     cout<<"d/dx(f(x))=d/dx("<<equation<<")"<<endl;
     if(single_or_multiple>0)
     {
-
+        show_as_uplusv(equation);
     }
+    cout<<"         =";
+    answer
+
 }
 //-5*x+6*x//-5*x
 int check_u_or_uplusv(string equation)
