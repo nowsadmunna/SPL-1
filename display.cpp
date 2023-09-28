@@ -40,9 +40,11 @@ int check_u_or_uplusv(string equation)
     }
     return plus_or_minus_count;
 }
+//5*x^2+6*x^-2=d/dx(5*x^2)+d/dx(6*x^-2)
 void show_as_uplusv(string equation)
 {
     string temporary_u_or_v="";
+    char get_symbol='\0';
     int i;
     for(i=0;i<equation.size();i++)
     {
@@ -50,12 +52,23 @@ void show_as_uplusv(string equation)
         {
             continue;
         }
-        
         if(equation[i]=='+' || equation[i]=='-')
         {
-            cout<<"d/dx("<<temporary_u_or_v<<")"<<equation[i];
-            temporary_u_or_v="";
+            if(equation[i-1]=='(')
+            {
+                continue;
+            }
+           else if(equation[i-1]!='^')
+           {
+                get_symbol=equation[i];
+           }
+           else 
+           {
+            temporary_u_or_v+=equation[i];
+            continue;
+           }
         }
+        if
     }
 }
 // void display()
