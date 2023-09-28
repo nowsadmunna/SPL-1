@@ -137,7 +137,7 @@ string partitioning_equation(string equation)
             {
                 coefficient=(int)(equation[i])-48;
             }
-            if(equation[i-1]=='-' && equation[i-2]=='(')
+            if(equation[i-1]=='-')
             {
                 coefficient=coefficient*(-1);
             }
