@@ -114,11 +114,9 @@ void partitioning_equation(string equation)
     string answer="";
     char variable='\0',sign='\0';
     int power=1,coefficient=1;
-    string co_coefficient="",co_power="";
-    //cout<<" sfsg"<<endl;
+    string co_coefficient,co_power;
     for(i=0;equation[i]!='\0'; )
-    {
-        //cout<<" sfsg"<<endl;
+    { 
         if(get_token[i]==1)
         {
             variable=equation[i];
@@ -142,39 +140,19 @@ void partitioning_equation(string equation)
             {
                 co_coefficient+=equation[i-1];
             }
-            for( ;get_token[i]!=2;i++)
+            while(1)
             {
-                co_coefficient+=equation[i];
+                if(get_token[i]!=2)
+                {
+                    break;
+                }
+                else 
+                {
+                    co_coefficient+=equation[i];
+                    i++;
+                }
             }
-            //coefficient=stoi(co_coefficient);
-            //cout<<co_coefficient<<endl;
-            // if(equation[i+1]=='*')
-            // {
-            //     coefficient=(int)(equation[i])-48;
-            // }
-            // if(equation[i-1]=='-')
-            // {
-            //     coefficient=coefficient*(-1);
-            // }
-            // if(equation[i-2]!='^' && (equation[i-1]=='+' || equation[i-1]=='-') && (equation[i+1]=='+' || equation[i+1]=='-'))
-            // {
-            //     coefficient=1401;
-            // }
-            // else if(equation[i-2]!='^' && (equation[i-1]=='+' || equation[i-1]=='-') && (equation[i+1]=='(' || equation[i+1]==')'))
-            // {
-            //     coefficient=1402;
-            //     variable=equation[i];
-            // }
-            // else if((equation[i-1]=='(' || equation[i-1]==')') && (equation[i+1]=='+' || equation[i+1]=='-'))
-            // {
-            //     coefficient=1403;
-            //     variable=equation[i];
-            // }
-            // else if((equation[i-1]=='(' || equation[i-1]==')')&&(equation[i+1]=='(' || equation[i+1]==')'))
-            // {
-            //     coefficient=1404;
-            //     variable=equation[i];
-            // }
+            coefficient=stoi(co_coefficient);           
         }
         else if(get_token[i]==3)
         {
@@ -186,23 +164,7 @@ void partitioning_equation(string equation)
             else
             {
                 i++;
-            }
-            // if(equation[i]=='*')
-            // {
-            //     continue;
-            // }
-            // else if(equation[i-1]=='(')
-            // {
-            //     continue;
-            // }
-            // else if(equation[i-1]!='^')
-            // {
-            //     sign=equation[i];
-            // }
-            // else 
-            // {
-            //     continue;
-            // }
+            }           
         }
         else if(get_token[i]==4)
         {
@@ -212,21 +174,19 @@ void partitioning_equation(string equation)
                 i=i+2;
             }
             i++;
-            for( ;get_token[i]!=2;i++)
+             while(1)
             {
-                co_power+=equation[i];
+                if(get_token[i]!=2)
+                {
+                    break;
+                }
+                else 
+                {
+                    co_power+=equation[i];
+                    i++;
+                }
             }
-            //power=stoi(co_power);
-            // if(get_token[i+1]==2)
-            // {
-            //     power=(int)(equation[i+1])-48;
-            // }
-            // else if(equation[i+1]=='-')
-            // {
-            //     power=(int)(equation[i+2])-48;
-            //     power=power*(-1);
-            // }
-
+            power=stoi(co_power);
         }
         else if(get_token[i]==5)
         {
@@ -234,7 +194,7 @@ void partitioning_equation(string equation)
         }
         if(sign=='+' || sign=='-')
         {
-            cout<<co_coefficient<<" "<<co_power<<endl;
+            cout<<coefficient<<" "<<power<<endl;
             sign='\0';
             coefficient=1;
             power=1;
@@ -243,7 +203,6 @@ void partitioning_equation(string equation)
             co_power="";
         }
     }
-    cout<<co_power<<endl;
-    //return "";
+    cout<<coefficient<<" "<<power<<endl;
 }
 
