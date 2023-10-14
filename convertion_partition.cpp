@@ -120,18 +120,6 @@ void partitioning_equation(string equation)
         if(get_token[i]==1)
         {
             variable=equation[i];
-            if(get_token[i+1]!=4)
-            {
-                power=1;
-            }
-            if(equation[i-1]=='+')
-            {
-                coefficient=1;
-            }
-            else if(equation[i-1]=='-')
-            {
-                coefficient=-1;
-            }
             i++;
         }
         else if(get_token[i]==2)
@@ -194,7 +182,8 @@ void partitioning_equation(string equation)
         }
         if(sign=='+' || sign=='-')
         {
-            cout<<coefficient<<" "<<power<<endl;
+            //cout<<coefficient<<" "<<power<<endl;
+            answer+=calculate_derivative(variable,power,coefficient,sign);
             sign='\0';
             coefficient=1;
             power=1;
@@ -203,6 +192,8 @@ void partitioning_equation(string equation)
             co_power="";
         }
     }
-    cout<<coefficient<<" "<<power<<endl;
+    answer+=calculate_derivative(variable,power,coefficient,sign);
+    cout<<endl<<answer<<endl;
+    //cout<<coefficient<<" "<<power<<endl;
 }
 

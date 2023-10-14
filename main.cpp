@@ -34,11 +34,11 @@ int main()
      // cout<<"       (iv)  d/dx(cosec(x))=    - cosec(x)*cot(x)"<<endl;
      // cout<<"       (v)   d/dx(tan(x))  =    sec^2(x)"<<endl;
      // cout<<"       (vi)  d/dx(cot(x))  =    - cosec^2(x)"<<endl;
-      string equation="(x^2+3*x+8*x^3+6*x^3+x^4+x^5+x^6+x^7+x^8+x^9)";
-      //show_as_uplusv(equation);
+     string equation="(6*x)";
+     show_as_uplusv(equation);
      //  int c=stoi("-150");
      //  cout<<c<<endl;
-      partitioning_equation(equation);
+     partitioning_equation(equation);
      // cout<<endl;
      //cout<<check_u_or_uplusv("(-5)*x")<<endl;
 }

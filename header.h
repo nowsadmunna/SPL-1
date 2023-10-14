@@ -23,4 +23,5 @@ void partitioning_equation(string equation);
 void as_algebric(string equation);
 int check_u_or_uplusv(string equation);
 void show_as_uplusv(string equation);
+string calculate_derivative(char variable,int power,int coefficient,char sign);
 #endif
