@@ -111,8 +111,9 @@ string partitioning_equation(string equation)
          }
     }
     string answer="";
-    char variable,sign='\0';
+    char variable='\0',sign='\0';
     int power=1,coefficient=1;
+    string co_coefficient,co_power;
     for(i=0;equation[i]!='\0';i++)
     {
         if(get_token[i]==1)
@@ -133,33 +134,42 @@ string partitioning_equation(string equation)
         }
         else if(get_token[i]==2)
         {
-            if(equation[i+1]=='*')
-            {
-                coefficient=(int)(equation[i])-48;
-            }
             if(equation[i-1]=='-')
             {
-                coefficient=coefficient*(-1);
+                co_coefficient+=equation[i];
             }
-            if(equation[i-2]!='^' && (equation[i-1]=='+' || equation[i-1]=='-') && (equation[i+1]=='+' || equation[i+1]=='-'))
+            for( ;get_token[i]!=2;i++)
             {
-                coefficient=1401;
+                co_coefficient+=equation[i];
             }
-            else if(equation[i-2]!='^' && (equation[i-1]=='+' || equation[i-1]=='-') && (equation[i+1]=='(' || equation[i+1]==')'))
-            {
-                coefficient=1402;
-                variable=equation[i];
-            }
-            else if((equation[i-1]=='(' || equation[i-1]==')') && (equation[i+1]=='+' || equation[i+1]=='-'))
-            {
-                coefficient=1403;
-                variable=equation[i];
-            }
-            else if((equation[i-1]=='(' || equation[i-1]==')')&&(equation[i+1]=='(' || equation[i+1]==')'))
-            {
-                coefficient=1404;
-                variable=equation[i];
-            }
+            coefficient=stoi(co_coefficient);
+            // if(equation[i+1]=='*')
+            // {
+            //     coefficient=(int)(equation[i])-48;
+            // }
+            // if(equation[i-1]=='-')
+            // {
+            //     coefficient=coefficient*(-1);
+            // }
+            // if(equation[i-2]!='^' && (equation[i-1]=='+' || equation[i-1]=='-') && (equation[i+1]=='+' || equation[i+1]=='-'))
+            // {
+            //     coefficient=1401;
+            // }
+            // else if(equation[i-2]!='^' && (equation[i-1]=='+' || equation[i-1]=='-') && (equation[i+1]=='(' || equation[i+1]==')'))
+            // {
+            //     coefficient=1402;
+            //     variable=equation[i];
+            // }
+            // else if((equation[i-1]=='(' || equation[i-1]==')') && (equation[i+1]=='+' || equation[i+1]=='-'))
+            // {
+            //     coefficient=1403;
+            //     variable=equation[i];
+            // }
+            // else if((equation[i-1]=='(' || equation[i-1]==')')&&(equation[i+1]=='(' || equation[i+1]==')'))
+            // {
+            //     coefficient=1404;
+            //     variable=equation[i];
+            // }
         }
         else if(get_token[i]==3)
         {
@@ -182,15 +192,25 @@ string partitioning_equation(string equation)
         }
         else if(get_token[i]==4)
         {
-            if(get_token[i+1]==2)
+            if(equation[i+1]=='-')
             {
-                power=(int)(equation[i+1])-48;
+                co_power+=equation[i+1];
+                i++;
             }
-            else if(equation[i+1]=='-')
+            for( ;get_token[i]!=2;i++)
             {
-                power=(int)(equation[i+2])-48;
-                power=power*(-1);
+                co_power+=equation[i];
             }
+            power=stoi(co_power);
+            // if(get_token[i+1]==2)
+            // {
+            //     power=(int)(equation[i+1])-48;
+            // }
+            // else if(equation[i+1]=='-')
+            // {
+            //     power=(int)(equation[i+2])-48;
+            //     power=power*(-1);
+            // }
 
         }
         if(sign=='+' || sign=='-' || equation[i]==')')
