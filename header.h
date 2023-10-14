@@ -19,7 +19,7 @@ bool a_digit(char c);
 bool an_operator(char c);
 bool a_power(char c);
 bool a_bracket(char c);
-string partitioning_equation(string equation);
+void partitioning_equation(string equation);
 void as_algebric(string equation);
 int check_u_or_uplusv(string equation);
 void show_as_uplusv(string equation);

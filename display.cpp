@@ -26,7 +26,7 @@ void as_algebric(string equation)
         show_as_uplusv(equation);
     }
     cout<<"         =";
-    answer
+    //answer
 
 }
 //-5*x+6*x//-5*x
@@ -55,7 +55,7 @@ void show_as_uplusv(string equation)
     int i;
     for(i=0;i<equation.size();i++)
     {
-        if((equation[i]=='+' || equation[i]=='-') && (equation[i-1]!='('))
+        if((equation[i]=='+' || equation[i]=='-') && (equation[i-1]!='(') && (equation[i-1]!='^'))
         {
             cout<<"d/dx("<<temporary_u_or_v<<")"<<equation[i];
             temporary_u_or_v="";

@@ -84,7 +84,7 @@ bool a_bracket(char c)
             return false;
         }
 }
-string partitioning_equation(string equation)
+void partitioning_equation(string equation)
 {
     int i;
     for(i=0;equation[i]!='\0';i++)
@@ -110,12 +110,15 @@ string partitioning_equation(string equation)
             get_token[i]=5;
          }
     }
+    //cout<<get_token[0]<<endl;
     string answer="";
     char variable='\0',sign='\0';
     int power=1,coefficient=1;
-    string co_coefficient,co_power;
-    for(i=0;equation[i]!='\0';i++)
+    string co_coefficient="",co_power="";
+    //cout<<" sfsg"<<endl;
+    for(i=0;equation[i]!='\0'; )
     {
+        //cout<<" sfsg"<<endl;
         if(get_token[i]==1)
         {
             variable=equation[i];
@@ -131,18 +134,20 @@ string partitioning_equation(string equation)
             {
                 coefficient=-1;
             }
+            i++;
         }
         else if(get_token[i]==2)
         {
-            if(equation[i-1]=='-')
+            if(equation[i-1]=='-' && equation[i-2]=='(')
             {
-                co_coefficient+=equation[i];
+                co_coefficient+=equation[i-1];
             }
             for( ;get_token[i]!=2;i++)
             {
                 co_coefficient+=equation[i];
             }
-            coefficient=stoi(co_coefficient);
+            //coefficient=stoi(co_coefficient);
+            //cout<<co_coefficient<<endl;
             // if(equation[i+1]=='*')
             // {
             //     coefficient=(int)(equation[i])-48;
@@ -173,35 +178,45 @@ string partitioning_equation(string equation)
         }
         else if(get_token[i]==3)
         {
-            if(equation[i]=='*')
-            {
-                continue;
-            }
-            else if(equation[i-1]=='(')
-            {
-                continue;
-            }
-            else if(equation[i-1]!='^')
+            if((equation[i]=='+' || equation[i]=='-') && (equation[i-1]!='(') && (equation[i-1]!='^'))
             {
                 sign=equation[i];
+                i++;
             }
-            else 
+            else
             {
-                continue;
+                i++;
             }
+            // if(equation[i]=='*')
+            // {
+            //     continue;
+            // }
+            // else if(equation[i-1]=='(')
+            // {
+            //     continue;
+            // }
+            // else if(equation[i-1]!='^')
+            // {
+            //     sign=equation[i];
+            // }
+            // else 
+            // {
+            //     continue;
+            // }
         }
         else if(get_token[i]==4)
         {
-            if(equation[i+1]=='-')
+            if(equation[i+1]=='(' && equation[i+2]=='-')
             {
-                co_power+=equation[i+1];
-                i++;
+                co_power+=equation[i+2];
+                i=i+2;
             }
+            i++;
             for( ;get_token[i]!=2;i++)
             {
                 co_power+=equation[i];
             }
-            power=stoi(co_power);
+            //power=stoi(co_power);
             // if(get_token[i+1]==2)
             // {
             //     power=(int)(equation[i+1])-48;
@@ -213,10 +228,22 @@ string partitioning_equation(string equation)
             // }
 
         }
-        if(sign=='+' || sign=='-' || equation[i]==')')
+        else if(get_token[i]==5)
         {
-            
+            i++;
+        }
+        if(sign=='+' || sign=='-')
+        {
+            cout<<co_coefficient<<" "<<co_power<<endl;
+            sign='\0';
+            coefficient=1;
+            power=1;
+            variable='\0';
+            co_coefficient="";
+            co_power="";
         }
     }
+    cout<<co_power<<endl;
+    //return "";
 }
 
