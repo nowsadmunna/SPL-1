@@ -34,12 +34,13 @@ int main()
      // cout<<"       (iv)  d/dx(cosec(x))=    - cosec(x)*cot(x)"<<endl;
      // cout<<"       (v)   d/dx(tan(x))  =    sec^2(x)"<<endl;
      // cout<<"       (vi)  d/dx(cot(x))  =    - cosec^2(x)"<<endl;
-     string equation="(x^2)*(x^3)";
+     string equation="sin(5*x)";
      //equation="(-6)";
      //show_as_uplusv(equation);
      //  int c=stoi("-150");
      //  cout<<c<<endl;
-     as_uv_function(equation);
+     check_trigonometry_funtion(equation);
+     cout<<as_trigonometry_function(equation)<<endl;
      //partitioning_equation(equation);
      // cout<<endl;
      //cout<<check_u_or_uplusv("(-5)*x")<<endl;

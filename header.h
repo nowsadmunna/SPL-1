@@ -10,7 +10,7 @@ void display();
 string removespaces(string equation);
 bool check_uv_function(string equation);
 string as_uv_function(string equation);
-bool check_trigonometry_funtion(string equation);
+int check_trigonometry_funtion(string equation);
 int derivative_sign_of_trigonometry();
 string as_trigonometry_function(string equation);
 int char_type(char c);
@@ -25,4 +25,6 @@ int check_u_or_uplusv(string equation);
 void show_as_uplusv(string equation);
 string calculate_derivative(char variable,int power,int coefficient,char sign);
 void initial_checking(string equation);
+int count_for_left_bracket(string equation);
+int count_for_right_bracket(string equation);
 #endif
