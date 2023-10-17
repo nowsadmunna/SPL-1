@@ -144,7 +144,7 @@ void partitioning_equation(string equation)
         }
         else if(get_token[i]==3)
         {
-            if((equation[i]=='+' || equation[i]=='-') && (equation[i-1]!='(') && (equation[i-1]!='^'))
+            if((equation[i]=='+' || equation[i]=='-') && (equation[i-1]!='('))
             {
                 sign=equation[i];
                 i++;

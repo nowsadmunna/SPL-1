@@ -3,6 +3,23 @@
 using namespace std;
 
 string answer="";
+string removespaces(string equation)
+{
+    string space_removal_string;
+    int i;
+    for(i=0;equation[i]!='\0';i++)
+    {
+        if(equation[i]==' ')
+            {
+                continue;
+            }
+        else
+            {
+                space_removal_string+=equation[i];
+            }
+    }
+    return space_removal_string;
+}
 void as_algebric(string equation)
 {
     int single_or_multiple=check_u_or_uplusv(equation);
@@ -97,20 +114,12 @@ void show_as_uplusv(string equation)
 //            }
 //         }
 // }
-// string removespaces(string equation)
-// {
-//     string space_removal_string;
-//     int i;
-//     for(i=0;equation[i]!='\0';i++)
-//     {
-//         if(equation[i]==' ')
-//             {
-//                 continue;
-//             }
-//         else
-//             {
-//                 space_removal_string+=equation[i];
-//             }
-//     }
-//     return space_removal_string;
-// }
+void initial_checking(string equation)
+{
+    string answer_for="";
+    if(check_uv_function(equation))
+    {
+        answer_for+=as_uv_function(equation);
+    }
+}
+
