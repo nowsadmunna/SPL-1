@@ -84,7 +84,7 @@ bool a_bracket(char c)
             return false;
         }
 }
-void partitioning_equation(string equation)
+string partitioning_equation(string equation)
 {
     int i;
     for(i=0;equation[i]!='\0';i++)
@@ -195,5 +195,6 @@ void partitioning_equation(string equation)
     answer+=calculate_derivative(variable,power,coefficient,sign);
     cout<<endl<<answer<<endl;
     //cout<<coefficient<<" "<<power<<endl;
+    return answer;
 }
 

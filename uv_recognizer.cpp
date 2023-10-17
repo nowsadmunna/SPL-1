@@ -20,7 +20,7 @@ bool check_uv_function(string equation)
 }
 string as_uv_function(string equation)
 {
-    string u_part,v_part;
+    string u_part,v_part,derivative_of_upart,derivative_of_vpart;
     int i;
     int flag=0;
     for(i=0;i<equation.size();i++)
@@ -29,15 +29,19 @@ string as_uv_function(string equation)
         {
             flag=1;
         }
-        if(flag==0)
+        else if(flag==0)
         {
             u_part+=equation[i];
         }
-        if(flag==1)
+        else if(flag==1)
         {
             v_part+=equation[i];
         }
     }
     cout<<u_part<<" "<<v_part<<endl;
+    derivative_of_upart=partitioning_equation(u_part);
+    derivative_of_vpart=partitioning_equation(v_part);
+    cout<<"("<<derivative_of_upart<<")*"<<v_part<<" + "<<"("<<derivative_of_vpart<<")"<<"*"<<u_part<<endl;
+    return " ";
 }
 
