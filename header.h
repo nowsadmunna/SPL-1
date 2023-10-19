@@ -28,4 +28,7 @@ void initial_checking(string equation);
 int count_for_left_bracket(string equation);
 int count_for_right_bracket(string equation);
 void partition_based_on_operator(string equation);
+string remove_bracket(string equation);
+bool check_udivv_function(string equation);
+string as_udivv(string equation);
 #endif

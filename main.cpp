@@ -34,7 +34,7 @@ int main()
      // cout<<"       (iv)  d/dx(cosec(x))=    - cosec(x)*cot(x)"<<endl;
      // cout<<"       (v)   d/dx(tan(x))  =    sec^2(x)"<<endl;
      // cout<<"       (vi)  d/dx(cot(x))  =    - cosec^2(x)"<<endl;
-     string equation="sin(5*x+x^2)+(-5)*x^3";
+     string equation="(3*x^2)/(5)";
      partition_based_on_operator(equation);
      //equation="(-6)";
      //show_as_uplusv(equation);

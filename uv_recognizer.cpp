@@ -7,7 +7,7 @@ bool check_uv_function(string equation)
     int i;
     for(i=0;equation[i]!='\0';i++)
     {
-        if(equation[i]=='*' && equation[i-1]==')' && (equation[i+1]='(' || (equation[i+1]>96 && equation[i+1]<123)))
+        if(equation[i]=='*' && equation[i-1]==')' && equation[i+1]=='(')
         {
             return true;
         }
@@ -22,10 +22,10 @@ string as_uv_function(string equation)
 {
     cout<<"As it follows uv method: "<<endl;
     cout<<"d/dx(u*v)="<<"u*d/dx(v)+v*d/dx(u)"<<endl;
-    string u_part,v_part,derivative_of_upart,derivative_of_vpart;
+    string u_part,v_part;
     int i;
     int flag=0;
-    for(i=1;i<equation.size()-1;i++)
+    for(i=0;i<equation.size();i++)
     {
         if(equation[i]=='*' && equation[i-1]==')' && equation[i+1]=='(')
         {
