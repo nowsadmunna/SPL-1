@@ -25,10 +25,9 @@ int check_u_or_uplusv(string equation);
 void show_as_uplusv(string equation);
 string calculate_derivative(char variable,int power,int coefficient,char sign);
 void initial_checking(string equation);
-int count_for_left_bracket(string equation);
-int count_for_right_bracket(string equation);
 void partition_based_on_operator(string equation);
 string remove_bracket(string equation);
 bool check_udivv_function(string equation);
 string as_udivv(string equation);
+string inside_of_bracket(string equation);
 #endif

@@ -127,7 +127,14 @@ void initial_checking(string equation)
     }
     else 
     {
-        answer_for+=partitioning_equation(equation);
+        if(check_trigonometry_funtion(equation))
+        {
+            as_trigonometry_function(equation);
+        }
+        else 
+        {
+            answer_for+=partitioning_equation(equation);
+        }
     }
     return;
 }
@@ -155,7 +162,7 @@ void partition_based_on_operator(string equation)
             if(bracket.size()==0)
             {
                 cout<<part<<endl;
-                initial_checking(part);
+                //initial_checking(part);
                 part="";
             }
             else 
@@ -170,5 +177,6 @@ void partition_based_on_operator(string equation)
     }
     cout<<part<<endl;
     initial_checking(part);
+    return;
 }
 

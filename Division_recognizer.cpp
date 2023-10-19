@@ -46,5 +46,12 @@ string as_udivv(string equation)
     cout<<"                     "<<v_part<<"*d/dx"<<u_part<<"-"<<u_part<<"*d/dx"<<v_part<<endl;
     cout<<"d/dx("<<equation<<")=----------------------------------------------------------"<<endl;
     cout<<"                                             "<<v_part<<"^2"<<endl;
+    cout<<"d/dx"<<u_part<<"=";
+    partition_based_on_operator(remove_bracket(u_part));
+    cout<<endl;
+    cout<<"d/dx"<<v_part<<"=";
+    partition_based_on_operator(remove_bracket(v_part));
+    cout<<endl;
+    // cout<<"("<<derivative_of_upart<<")*"<<v_part<<" + "<<"("<<derivative_of_vpart<<")"<<"*"<<u_part<<endl;
     return "";
 }

@@ -8,8 +8,9 @@ int check_trigonometry_funtion(string equation)
 {
    int ln_count=500,trigonometry_count=500,root_count=500;
    int i;
+   which_trigonometry=0;
    for(i=0;equation[i]!='\0';i++)
-   {
+   {   
        if(equation[i]=='l' && equation[i+1]=='n')
        {
            ln_count=i;
@@ -77,13 +78,8 @@ int derivative_sign_of_trigonometry()
 string as_trigonometry_function(string equation)
 {
     string inside_of_trigonometry;
-    int i;
-    int fst=count_for_left_bracket(equation);
-    int lst=count_for_right_bracket(equation);
-    for(i=fst;i<lst;i++)
-    {
-        inside_of_trigonometry+=equation[i];
-    }
+    inside_of_trigonometry=inside_of_bracket(equation);
+    //cout<<inside_of_trigonometry<<endl;
     if(derivative_sign_of_trigonometry()==1)
     {
         cout<<"cos("<<inside_of_trigonometry<<")* d/dx("<<inside_of_trigonometry<<")"<<endl;
@@ -108,34 +104,39 @@ string as_trigonometry_function(string equation)
     {
         cout<<"-cosec^2("<<inside_of_trigonometry<<")* d/dx("<<inside_of_trigonometry<<")"<<endl;
     }
-    initial_checking(inside_of_trigonometry);
+    partition_based_on_operator(inside_of_trigonometry);
     return"";
 }
-int count_for_left_bracket(string equation)
+string inside_of_bracket(string equation)
 {
-    int i;
+    stack<char>bracket;
+    stack<int>index_of_bracket;
+    string part;
+    int i,x;
     for(i=0;i<equation.size();i++)
     {
         if(equation[i]=='(')
         {
-            count_of_left_bracket++;
-            return i+1;
+            bracket.push(equation[i]);
+            index_of_bracket.push(i);
         }
-    }
-}
-int count_for_right_bracket(string equation)
-{
-    int i;
-    for(i=equation.size()-1;i>=0;i--)
-    {
-        if(equation[i]==')')
+        else if(equation[i]==')')
         {
-            count_of_right_bracket++;
-            if(count_of_left_bracket==count_of_right_bracket)
+            if(bracket.size()==1)
             {
-                return i;
+                x=i;
+                break;
+            }
+            else 
+            {
+                bracket.pop();
+                index_of_bracket.pop();
             }
         }
     }
+    for(i=index_of_bracket.top()+1;i<x;i++)
+    {
+        part+=equation[i];
+    }
+    return part;
 }
-
