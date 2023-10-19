@@ -121,10 +121,19 @@ void initial_checking(string equation)
     {
         answer_for+=as_uv_function(equation);
     }
+    else if(check_udivv_function(equation))
+    {
+        answer_for+=as_udivv(equation);
+    }
+    else 
+    {
+        answer_for+=partitioning_equation(equation);
+    }
+    return;
 }
 void partition_based_on_operator(string equation)
 {
-    string part;
+    string part,answer;
     stack<char>bracket;
     int i;
     for(i=0;i<equation.size();i++)
@@ -146,7 +155,7 @@ void partition_based_on_operator(string equation)
             if(bracket.size()==0)
             {
                 cout<<part<<endl;
-                //initial_checking(part);
+                initial_checking(part);
                 part="";
             }
             else 
@@ -160,5 +169,6 @@ void partition_based_on_operator(string equation)
         }
     }
     cout<<part<<endl;
+    initial_checking(part);
 }
 
