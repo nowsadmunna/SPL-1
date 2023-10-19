@@ -2,93 +2,93 @@
 #include "header.h"
 using namespace std;
 
-string answer="";
-string removespaces(string equation)
-{
-    string space_removal_string;
-    int i;
-    for(i=0;equation[i]!='\0';i++)
-    {
-        if(equation[i]==' ')
-            {
-                continue;
-            }
-        else
-            {
-                space_removal_string+=equation[i];
-            }
-    }
-    return space_removal_string;
-}
-void as_algebric(string equation)
-{
-    int single_or_multiple=check_u_or_uplusv(equation);
-    if(single_or_multiple==0)
-    {
-        cout<<"The formula for solving this equation: "<<endl;
-        cout<<"                                      d/dx(x^n)= nx^(n-1)"<<endl;
-    }
-    else 
-    {
-        cout<<"The formula for solving this equation: "<<endl;
-        cout<<"                                      d/dx(u+v)= d/dx(u)+d/dx(v)"<<endl;
-        cout<<"The power formula is also needed: "<<endl;
-        cout<<"                                  d/dx(x^n)= nx^(n-1)"<<endl;                                      
-    }
-    cout<<"Given Equation: "<<endl;
-    cout<<"f(x)= "<<equation<<endl;
-    cout<<"d/dx(f(x))=d/dx("<<equation<<")"<<endl;
-    if(single_or_multiple>0)
-    {
-        show_as_uplusv(equation);
-    }
-    cout<<"         =";
-    //answer
+// string answer="";
+// string removespaces(string equation)
+// {
+//     string space_removal_string;
+//     int i;
+//     for(i=0;equation[i]!='\0';i++)
+//     {
+//         if(equation[i]==' ')
+//             {
+//                 continue;
+//             }
+//         else
+//             {
+//                 space_removal_string+=equation[i];
+//             }
+//     }
+//     return space_removal_string;
+// }
+// void as_algebric(string equation)
+// {
+//     int single_or_multiple=check_u_or_uplusv(equation);
+//     if(single_or_multiple==0)
+//     {
+//         cout<<"The formula for solving this equation: "<<endl;
+//         cout<<"                                      d/dx(x^n)= nx^(n-1)"<<endl;
+//     }
+//     else 
+//     {
+//         cout<<"The formula for solving this equation: "<<endl;
+//         cout<<"                                      d/dx(u+v)= d/dx(u)+d/dx(v)"<<endl;
+//         cout<<"The power formula is also needed: "<<endl;
+//         cout<<"                                  d/dx(x^n)= nx^(n-1)"<<endl;                                      
+//     }
+//     cout<<"Given Equation: "<<endl;
+//     cout<<"f(x)= "<<equation<<endl;
+//     cout<<"d/dx(f(x))=d/dx("<<equation<<")"<<endl;
+//     if(single_or_multiple>0)
+//     {
+//         show_as_uplusv(equation);
+//     }
+//     cout<<"         =";
+//     //answer
 
-}
-//-5*x+6*x//-5*x
-int check_u_or_uplusv(string equation)
-{
-    int plus_or_minus_count=0;
-    for(int i=0;i<equation.size();i++)
-    {
+// }
+// //-5*x+6*x//-5*x
+// int check_u_or_uplusv(string equation)
+// {
+//     int plus_or_minus_count=0;
+//     for(int i=0;i<equation.size();i++)
+//     {
 
-        if((equation[i]=='+' || equation[i]=='-') && (equation[i-1]!='('))
-            {
-                plus_or_minus_count++;
-            }
-        else 
-            {
-                continue;
-            }
-    }
-    return plus_or_minus_count;
-}
-//5*x^2+6*x^-2=d/dx(5*x^2)+d/dx(6*x^-2)
-void show_as_uplusv(string equation)
-{
-    string temporary_u_or_v="";
-    char get_symbol='\0';
-    int i;
-    for(i=0;i<equation.size();i++)
-    {
-        if((equation[i]=='+' || equation[i]=='-') && (equation[i-1]!='(') && (equation[i-1]!='^'))
-        {
-            cout<<"d/dx("<<temporary_u_or_v<<")"<<equation[i];
-            temporary_u_or_v="";
-        }
-        else if(equation[i]=='(' || equation[i]==')')
-        {
-            continue;
-        }
-        else 
-        {
-            temporary_u_or_v+=equation[i];
-        }
-    }
-    cout<<"d/dx("<<temporary_u_or_v<<')'<<endl;
+//         if((equation[i]=='+' || equation[i]=='-') && (equation[i-1]!='('))
+//             {
+//                 plus_or_minus_count++;
+//             }
+//         else 
+//             {
+//                 continue;
+//             }
+//     }
+//     return plus_or_minus_count;
+// }
+// //5*x^2+6*x^-2=d/dx(5*x^2)+d/dx(6*x^-2)
+// void show_as_uplusv(string equation)
+// {
+//     string temporary_u_or_v="";
+//     char get_symbol='\0';
+//     int i;
+//     for(i=0;i<equation.size();i++)
+//     {
+//         if((equation[i]=='+' || equation[i]=='-') && (equation[i-1]!='(') && (equation[i-1]!='^'))
+//         {
+//             cout<<"d/dx("<<temporary_u_or_v<<")"<<equation[i];
+//             temporary_u_or_v="";
+//         }
+//         else if(equation[i]=='(' || equation[i]==')')
+//         {
+//             continue;
+//         }
+//         else 
+//         {
+//             temporary_u_or_v+=equation[i];
+//         }
+//     }
+//     cout<<"d/dx("<<temporary_u_or_v<<')'<<endl;
         
-}
+// }
 // void display()
 // {
 //         cout<<"Enter the equation that you want to differentiate"<<endl;
@@ -121,5 +121,44 @@ void initial_checking(string equation)
     {
         answer_for+=as_uv_function(equation);
     }
+}
+void partition_based_on_operator(string equation)
+{
+    string part;
+    stack<char>bracket;
+    int i;
+    for(i=0;i<equation.size();i++)
+    {
+        if(equation[i]=='(')
+        {
+            bracket.push(equation[i]);
+            part+=equation[i];
+        }
+        else if(equation[i]==')')
+        {
+            bracket.pop();
+            part+=equation[i];
+        }
+        else if(equation[i]=='+' || equation[i]=='-')
+        {
+            //cout<<bracket.size()<<endl;
+
+            if(bracket.size()==0)
+            {
+                cout<<part<<endl;
+                //initial_checking(part);
+                part="";
+            }
+            else 
+            {
+                part+=equation[i];
+            }
+        }
+        else 
+        {
+            part+=equation[i];
+        }
+    }
+    cout<<part<<endl;
 }
 

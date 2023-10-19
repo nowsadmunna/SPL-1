@@ -27,4 +27,5 @@ string calculate_derivative(char variable,int power,int coefficient,char sign);
 void initial_checking(string equation);
 int count_for_left_bracket(string equation);
 int count_for_right_bracket(string equation);
+void partition_based_on_operator(string equation);
 #endif
