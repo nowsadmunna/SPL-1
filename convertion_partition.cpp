@@ -86,7 +86,6 @@ bool a_bracket(char c)
 }
 string partitioning_equation(string equation)
 {
-    cout<<"partition"<<endl;
     int i;
     for(i=0;equation[i]!='\0';i++)
     {

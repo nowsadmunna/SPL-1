@@ -39,7 +39,7 @@ string as_expotential_function(string equation)
     inside_of_ex=inside_of_bracket(equation);
     cout<<"As it is a expotential function.it will follow the expotential rule: "<<endl;
     cout<<"d/dx(e^(x))=e^(x)"<<endl;
-    cout<<"d/dx("<<equation<<")= "<<"ln("<<inside_of_ex<<")* d/dx("<<inside_of_ex<<")"<<endl;
+    cout<<"d/dx("<<equation<<")= "<<"e^("<<inside_of_ex<<")* d/dx("<<inside_of_ex<<")"<<endl;
     partition_based_on_operator(inside_of_ex);
     return " ";
 }

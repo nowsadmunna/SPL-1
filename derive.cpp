@@ -27,16 +27,14 @@ string calculate_derivative(char variable,int power,int coefficient,char sign)
             answer+='(';
             answer+=to_string(derivative_coefficient);
             answer+=')';
+            cout<<"(";
             if(coefficient<0)
             {
                 cout<<"("<<coefficient<<")";
             }
             else 
             {
-                if(coefficient!=1)
-                {
-                    cout<<coefficient;
-                }
+                cout<<coefficient;
             }
             cout<<"*";
             if(power<0)
@@ -47,10 +45,12 @@ string calculate_derivative(char variable,int power,int coefficient,char sign)
             {
                 cout<<power;
             }
-            }
+            cout<<")";
+        }
         else 
         {
             answer+=to_string(derivative_coefficient);
+            cout<<"(";
             if(coefficient<0)
             {
                 cout<<"("<<coefficient<<")";
@@ -71,6 +71,7 @@ string calculate_derivative(char variable,int power,int coefficient,char sign)
             {
                 cout<<power;
             }
+            cout<<")";
         }
     }
     if(derivative_coefficient==1 && derivative_power==0)
