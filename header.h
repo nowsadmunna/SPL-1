@@ -31,4 +31,9 @@ bool check_udivv_function(string equation);
 string as_udivv(string equation);
 string inside_of_bracket(string equation);
 int check_ln_function(string equation);
+string as_ln_function(string equation);
+int check_square_root_function(string equation);
+string as_square_root_function(string equation);
+int check_expotentail_function(string equation);
+string as_expotential_function(string equation);
 #endif

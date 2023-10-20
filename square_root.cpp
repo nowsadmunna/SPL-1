@@ -1,7 +1,7 @@
 #include<iostream>
 #include"header.h"
 using namespace std;
-int check_expotentail_function(string equation)
+int check_square_root_function(string equation)
 {
    int ln_count=500,trigonometry_count=500,root_count=500,expotential_count=500;
    int i;
@@ -24,7 +24,7 @@ int check_expotentail_function(string equation)
         expotential_count=i;
        }
    }
-   if(expotential_count<ln_count && expotential_count<trigonometry_count && expotential_count<root_count)
+   if(root_count<expotential_count && root_count<trigonometry_count && root_count<ln_count)
    {
     return 1;
    }
@@ -33,13 +33,13 @@ int check_expotentail_function(string equation)
     return 0;
    }
 }
-string as_expotential_function(string equation)
+string as_square_root_function(string equation)
 {
-    string inside_of_ex;
-    inside_of_ex=inside_of_bracket(equation);
-    cout<<"As it is a expotential function.it will follow the expotential rule: "<<endl;
-    cout<<"d/dx(e^(x))=e^(x)"<<endl;
-    cout<<"d/dx("<<equation<<")= "<<"ln("<<inside_of_ex<<")* d/dx("<<inside_of_ex<<")"<<endl;
-    partition_based_on_operator(inside_of_ex);
+    string inside_of_square_root;
+    inside_of_square_root=inside_of_bracket(equation);
+    cout<<"As it is a root function.it will follow the square root rule: "<<endl;
+    cout<<"d/dx(sqrt(x))=1/(2*sqrt(x))"<<endl;
+    cout<<"d/dx("<<equation<<")= "<<"(1/2*sqrt("<<inside_of_square_root<<"))* d/dx("<<inside_of_square_root<<")";
+    partition_based_on_operator(inside_of_square_root);
     return " ";
 }

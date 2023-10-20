@@ -131,6 +131,18 @@ void initial_checking(string equation)
         {
             as_trigonometry_function(equation);
         }
+        else if(check_ln_function(equation))
+        {
+            as_ln_function(equation);
+        }
+        else if(check_expotentail_function(equation))
+        {
+            as_expotential_function(equation);
+        }
+        else if(check_square_root_function(equation))
+        {
+            as_square_root_function(equation);
+        }
         else 
         {
             answer_for+=partitioning_equation(equation);
