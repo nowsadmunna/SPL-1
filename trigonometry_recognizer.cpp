@@ -2,11 +2,9 @@
 #include"header.h"
 using namespace std;
 int which_trigonometry=0;
-int kt=0;
-int count_of_left_bracket=-1,count_of_right_bracket=-1;
 int check_trigonometry_funtion(string equation)
 {
-   int ln_count=500,trigonometry_count=500,root_count=500;
+   int ln_count=500,trigonometry_count=500,root_count=500,expotential_count=500;
    int i;
    which_trigonometry=0;
    for(i=0;equation[i]!='\0';i++)
@@ -24,6 +22,10 @@ int check_trigonometry_funtion(string equation)
        {
            trigonometry_count=i;
        }
+       else if(equation[i]=='e' && equation[i+1]=='^')
+       {
+        expotential_count=i;
+       }
    }
    if(ln_count<trigonometry_count)
    {
@@ -32,6 +34,10 @@ int check_trigonometry_funtion(string equation)
    if(root_count<trigonometry_count)
    {
        return 0;
+   }
+   if(expotential_count<trigonometry_count)
+   {
+    return 0;
    }
    for(i=0;equation[i]!='\0';i++)
    {
@@ -79,7 +85,6 @@ string as_trigonometry_function(string equation)
 {
     string inside_of_trigonometry;
     inside_of_trigonometry=inside_of_bracket(equation);
-    //cout<<inside_of_trigonometry<<endl;
     if(derivative_sign_of_trigonometry()==1)
     {
         cout<<"cos("<<inside_of_trigonometry<<")* d/dx("<<inside_of_trigonometry<<")"<<endl;

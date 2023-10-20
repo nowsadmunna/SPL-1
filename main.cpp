@@ -34,8 +34,9 @@ int main()
      // cout<<"       (iv)  d/dx(cosec(x))=    - cosec(x)*cot(x)"<<endl;
      // cout<<"       (v)   d/dx(tan(x))  =    sec^2(x)"<<endl;
      // cout<<"       (vi)  d/dx(cot(x))  =    - cosec^2(x)"<<endl;
-     string equation="(-6)";
-     partition_based_on_operator(equation);
+     string equation="e^(3*x^2)";
+     //partition_based_on_operator(equation);
+     cout<<check_ln_function(equation)<<endl;
      //equation="(-6)";
      //show_as_uplusv(equation);
      //  int c=stoi("-150");

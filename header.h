@@ -30,4 +30,5 @@ string remove_bracket(string equation);
 bool check_udivv_function(string equation);
 string as_udivv(string equation);
 string inside_of_bracket(string equation);
+int check_ln_function(string equation);
 #endif
