@@ -117,16 +117,16 @@ using namespace std;
 string initial_checking(string equation,string temporary)
 {
     string answer_for="";
-    // if(check_uv_function(equation))
-    // {
-    //     answer_for+=as_uv_function(equation);
-    // }
-    // else if(check_udivv_function(equation))
-    // {
-    //     answer_for+=as_udivv(equation);
-    // }
-    // else 
-    //{
+     if(check_uv_function(equation))
+    {
+        answer_for+=as_uv_function(equation,temporary);
+    }
+    else if(check_udivv_function(equation))
+    {
+        answer_for+=as_udivv(equation,temporary);
+    }
+    else 
+    {
         if(check_trigonometry_funtion(equation))
         {
             answer_for+=as_trigonometry_function(equation,temporary);
@@ -147,7 +147,7 @@ string initial_checking(string equation,string temporary)
         {
             answer_for+=partitioning_equation(equation);
         }
-    //}
+    }
     return answer_for;
 }
 string partition_based_on_operator(string equation,string temporary)

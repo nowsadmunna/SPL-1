@@ -11,7 +11,7 @@ string calculate_derivative(char variable,int power,int coefficient,char sign)
     if(another_sign=='+' || another_sign=='-')
     {
         answer+=another_sign;
-        cout<<another_sign;
+        //cout<<another_sign;
     }
     if(variable=='\0')
     {
