@@ -34,8 +34,10 @@ int main()
      // cout<<"       (iv)  d/dx(cosec(x))=    - cosec(x)*cot(x)"<<endl;
      // cout<<"       (v)   d/dx(tan(x))  =    sec^2(x)"<<endl;
      // cout<<"       (vi)  d/dx(cot(x))  =    - cosec^2(x)"<<endl;
-     string equation="e^(sqrt(ln(tan(x^3+3*x))))";
-     partition_based_on_operator(equation);
+     string equation="sin(ln(5*x))";
+     string temporary;
+     string answer=partition_based_on_operator(equation,temporary);
+     cout<<"Answer= "<<answer<<endl;
      //cout<<check_ln_function(equation)<<endl;
      //equation="(-6)";
      //show_as_uplusv(equation);

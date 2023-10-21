@@ -1,6 +1,7 @@
 #include<iostream>
 #include"header.h"
 using namespace std;
+string temporary_for_ln;
 int check_ln_function(string equation)
 {
    int ln_count=500,trigonometry_count=500,root_count=500,expotential_count=500;
@@ -33,13 +34,15 @@ int check_ln_function(string equation)
     return 0;
    }
 }
-string as_ln_function(string equation)
+string as_ln_function(string equation,string temporary)
 {
-    string inside_of_ln;
+    string inside_of_ln,answer;
     inside_of_ln=inside_of_bracket(equation);
-    cout<<"As it is a ln function.it will follow the logarithm rule: "<<endl;
-    cout<<"d/dx(ln(x))=1/x"<<endl;
-    cout<<"d/dx("<<equation<<")= "<<"ln("<<inside_of_ln<<")* d/dx("<<inside_of_ln<<")"<<endl;
-    partition_based_on_operator(inside_of_ln);
-    return " ";
+    // cout<<"As it is a ln function.it will follow the logarithm rule: "<<endl;
+    // cout<<"d/dx(ln(x))=1/x"<<endl;
+    // cout<<"d/dx("<<equation<<")= "<<endl;
+    temporary+="(1/("+inside_of_ln+"))*";
+    cout<<temporary<<"d/dx("<<inside_of_ln<<")"<<endl;
+    answer+="(1/("+inside_of_ln+"))*("+partition_based_on_operator(inside_of_ln,temporary)+")";
+    return answer;
 }

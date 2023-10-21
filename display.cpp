@@ -114,43 +114,43 @@ using namespace std;
 //            }
 //         }
 // }
-void initial_checking(string equation)
+string initial_checking(string equation,string temporary)
 {
     string answer_for="";
-    if(check_uv_function(equation))
-    {
-        answer_for+=as_uv_function(equation);
-    }
-    else if(check_udivv_function(equation))
-    {
-        answer_for+=as_udivv(equation);
-    }
-    else 
-    {
+    // if(check_uv_function(equation))
+    // {
+    //     answer_for+=as_uv_function(equation);
+    // }
+    // else if(check_udivv_function(equation))
+    // {
+    //     answer_for+=as_udivv(equation);
+    // }
+    // else 
+    //{
         if(check_trigonometry_funtion(equation))
         {
-            as_trigonometry_function(equation);
+            answer_for+=as_trigonometry_function(equation,temporary);
         }
         else if(check_ln_function(equation))
         {
-            as_ln_function(equation);
+            answer_for+=as_ln_function(equation,temporary);
         }
-        else if(check_expotentail_function(equation))
-        {
-            as_expotential_function(equation);
-        }
-        else if(check_square_root_function(equation))
-        {
-            as_square_root_function(equation);
-        }
+        // else if(check_expotentail_function(equation))
+        // {
+        //     answer_for+=as_expotential_function(equation);
+        // }
+        // else if(check_square_root_function(equation))
+        // {
+        //     answer_for+=as_square_root_function(equation);
+        // }
         else 
         {
             answer_for+=partitioning_equation(equation);
         }
-    }
-    return;
+    //}
+    return answer_for;
 }
-void partition_based_on_operator(string equation)
+string partition_based_on_operator(string equation,string temporary)
 {
     string part,answer;
     stack<char>bracket;
@@ -173,8 +173,9 @@ void partition_based_on_operator(string equation)
 
             if(bracket.size()==0)
             {
-                cout<<part<<endl;
-                initial_checking(part);
+                //cout<<part<<endl;
+                answer+=initial_checking(part,temporary);
+                answer+=equation[i];
                 part="";
             }
             else 
@@ -187,8 +188,8 @@ void partition_based_on_operator(string equation)
             part+=equation[i];
         }
     }
-    cout<<part<<endl;
-    initial_checking(part);
-    return;
+   // cout<<part<<endl;
+    answer+=initial_checking(part,temporary);
+    return answer;
 }
 

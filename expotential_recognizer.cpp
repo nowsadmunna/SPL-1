@@ -33,13 +33,16 @@ int check_expotentail_function(string equation)
     return 0;
    }
 }
-string as_expotential_function(string equation)
+string as_expotential_function(string equation,string temporary)
 {
-    string inside_of_ex;
+    string inside_of_ex,answer;
     inside_of_ex=inside_of_bracket(equation);
-    cout<<"As it is a expotential function.it will follow the expotential rule: "<<endl;
-    cout<<"d/dx(e^(x))=e^(x)"<<endl;
-    cout<<"d/dx("<<equation<<")= "<<"e^("<<inside_of_ex<<")* d/dx("<<inside_of_ex<<")"<<endl;
-    partition_based_on_operator(inside_of_ex);
-    return " ";
+    // cout<<"As it is a expotential function.it will follow the expotential rule: "<<endl;
+    // cout<<"d/dx(e^(x))=e^(x)"<<endl;
+    // cout<<"d/dx("<<equation<<")= "<<"e^("<<inside_of_ex<<")* d/dx("<<inside_of_ex<<")"<<endl;
+    temporary+="e^("+inside_of_ex+")*";
+    cout<<temporary<<"d/dx("<<inside_of_ex<<")"<<endl;
+    partition_based_on_operator(inside_of_ex,temporary);
+    answer+="e^("+inside_of_ex+")*("+partition_based_on_operator(inside_of_ex,temporary)+")";
+    return answer;
 }
