@@ -18,7 +18,7 @@ bool check_uv_function(string equation)
     }
     return false;
 }
-string as_uv_function(string equation)
+string as_uv_function(string equation,string temporary)
 {
     cout<<"As it follows uv method: "<<endl;
     cout<<"d/dx(u*v)="<<"u*d/dx(v)+v*d/dx(u)"<<endl;
@@ -44,10 +44,10 @@ string as_uv_function(string equation)
     cout<<"v="<<v_part<<endl;
     cout<<"d/dx("<<equation<<")="<<u_part<<"*d/dx"<<v_part<<"+"<<v_part<<"*d/dx"<<u_part<<endl;
     cout<<"d/dx"<<u_part<<"=";
-    partition_based_on_operator(remove_bracket(u_part));
+    partition_based_on_operator(remove_bracket(u_part),temporary);
     cout<<endl;
     cout<<"d/dx"<<v_part<<"=";
-    partition_based_on_operator(remove_bracket(v_part));
+    partition_based_on_operator(remove_bracket(v_part),temporary);
     cout<<endl;
     // cout<<"("<<derivative_of_upart<<")*"<<v_part<<" + "<<"("<<derivative_of_vpart<<")"<<"*"<<u_part<<endl;
     return " ";

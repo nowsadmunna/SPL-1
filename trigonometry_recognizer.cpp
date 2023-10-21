@@ -94,36 +94,36 @@ string as_trigonometry_function(string equation,string temporary)
     }
     else if(derivative_sign_of_trigonometry()==3)
     {
-        temoprary_for_trigonometry+="sec^2("+inside_of_trigonometry+")*";
-        cout<<temoprary_for_trigonometry<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+        temporary+="sec^2("+inside_of_trigonometry+")*";
+        cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
         answer="sec^2("+inside_of_trigonometry+")*("+partition_based_on_operator(inside_of_trigonometry,temporary)+")";
 
     }
     else if(derivative_sign_of_trigonometry()==5)
     {
-        temoprary_for_trigonometry+="sec("+inside_of_trigonometry+")*"+"tan("+inside_of_trigonometry+")*";
-        cout<<temoprary_for_trigonometry<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+        temporary+="sec("+inside_of_trigonometry+")*"+"tan("+inside_of_trigonometry+")*";
+        cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
         answer="sec("+inside_of_trigonometry+")"+"*"+"tan("+inside_of_trigonometry+")*("+partition_based_on_operator(inside_of_trigonometry,temporary)+")";
 
     }
     else if(derivative_sign_of_trigonometry()==2)
     {
-        temoprary_for_trigonometry+="-cosec("+inside_of_trigonometry+")*"+"cot("+inside_of_trigonometry+")*";
-        cout<<temoprary_for_trigonometry<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+        temporary+="-cosec("+inside_of_trigonometry+")*"+"cot("+inside_of_trigonometry+")*";
+        cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
         answer="-cosec("+inside_of_trigonometry+")"+"*"+"cot("+inside_of_trigonometry+")*("+partition_based_on_operator(inside_of_trigonometry,temporary)+")";
 
     }
     else if(derivative_sign_of_trigonometry()==4)
     {
-       temoprary_for_trigonometry+="(-sin("+inside_of_trigonometry+"))*";
-        cout<<temoprary_for_trigonometry<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+       temporary+="(-sin("+inside_of_trigonometry+"))*";
+        cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
         answer="-sin("+inside_of_trigonometry+")*("+partition_based_on_operator(inside_of_trigonometry,temporary)+")";
 
     }
     else if(derivative_sign_of_trigonometry()==6)
     {
-        temoprary_for_trigonometry+="(-cosec^2("+inside_of_trigonometry+"))*";
-        cout<<temoprary_for_trigonometry<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+        temporary+="(-cosec^2("+inside_of_trigonometry+"))*";
+        cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
         answer="-cosec^2("+inside_of_trigonometry+")*("+partition_based_on_operator(inside_of_trigonometry,temporary)+")";
 
     }

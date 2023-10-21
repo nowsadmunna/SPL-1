@@ -135,14 +135,14 @@ string initial_checking(string equation,string temporary)
         {
             answer_for+=as_ln_function(equation,temporary);
         }
-        // else if(check_expotentail_function(equation))
-        // {
-        //     answer_for+=as_expotential_function(equation);
-        // }
-        // else if(check_square_root_function(equation))
-        // {
-        //     answer_for+=as_square_root_function(equation);
-        // }
+        else if(check_expotentail_function(equation))
+        {
+            answer_for+=as_expotential_function(equation,temporary);
+        }
+        else if(check_square_root_function(equation))
+        {
+            answer_for+=as_square_root_function(equation,temporary);
+        }
         else 
         {
             answer_for+=partitioning_equation(equation);
