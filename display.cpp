@@ -117,6 +117,7 @@ using namespace std;
 string initial_checking(string equation,string temporary)
 {
     string answer_for="";
+    int i;
      if(check_uv_function(equation))
     {
         answer_for+=as_uv_function(equation,temporary);
@@ -145,7 +146,14 @@ string initial_checking(string equation,string temporary)
         }
         else 
         {
-            answer_for+=partitioning_equation(equation);
+            answer_for+=partitioning_equation(equation,temporary);
+        }
+    }
+    for(i=0;i<answer_for.size();i++)
+    {
+        if(answer_for[i]=='0' && answer_for[i-1]=='*')
+        {
+            answer_for="0";
         }
     }
     return answer_for;
@@ -191,5 +199,36 @@ string partition_based_on_operator(string equation,string temporary)
    // cout<<part<<endl;
     answer+=initial_checking(part,temporary);
     return answer;
+}
+int check_algebric_equation(string equation)
+{
+    if(check_uv_function(equation))
+    {
+        return 0;
+    }
+    else if(check_udivv_function(equation))
+    {
+        return 0;
+    }
+    else if(check_trigonometry_funtion(equation))
+    {
+        return 0;
+    }
+    else if(check_ln_function(equation))
+    {
+        return 0;
+    }
+    else if(check_expotentail_function(equation))
+    {
+        return 0;
+    }
+    else if(check_square_root_function(equation))
+    {
+        return 0;
+    }
+    else 
+    {
+        return 1;
+    }
 }
 

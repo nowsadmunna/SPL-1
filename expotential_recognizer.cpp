@@ -10,18 +10,22 @@ int check_expotentail_function(string equation)
        if(equation[i]=='l' && equation[i+1]=='n')
        {
            ln_count=i;
+           break;
        }
        else if(equation[i]=='s' && equation[i+1]=='q' && equation[i+2]=='r' && equation[i+3]=='t')
        {
            root_count=i;
+           break;
        }
        else if(equation[i]=='t' || equation[i]=='s' || equation[i]=='c')
        {
            trigonometry_count=i;
+           break;
        }
        else if(equation[i]=='e' && equation[i+1]=='^')
        {
         expotential_count=i;
+        break;
        }
    }
    if(expotential_count<ln_count && expotential_count<trigonometry_count && expotential_count<root_count)
@@ -42,7 +46,6 @@ string as_expotential_function(string equation,string temporary)
     // cout<<"d/dx("<<equation<<")= "<<"e^("<<inside_of_ex<<")* d/dx("<<inside_of_ex<<")"<<endl;
     temporary+="e^("+inside_of_ex+")*";
     cout<<temporary<<"d/dx("<<inside_of_ex<<")"<<endl;
-    partition_based_on_operator(inside_of_ex,temporary);
     answer+="e^("+inside_of_ex+")*("+partition_based_on_operator(inside_of_ex,temporary)+")";
     return answer;
 }

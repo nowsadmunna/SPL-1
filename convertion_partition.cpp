@@ -84,7 +84,7 @@ bool a_bracket(char c)
             return false;
         }
 }
-string partitioning_equation(string equation)
+string partitioning_equation(string equation,string temporary)
 {
     int i;
     for(i=0;equation[i]!='\0';i++)
@@ -183,7 +183,7 @@ string partitioning_equation(string equation)
         if(sign=='+' || sign=='-')
         {
             //cout<<coefficient<<" "<<power<<endl;
-            answer+=calculate_derivative(variable,power,coefficient,sign);
+            answer+=calculate_derivative(variable,power,coefficient,sign,temporary);
             sign='\0';
             coefficient=1;
             power=1;
@@ -192,7 +192,7 @@ string partitioning_equation(string equation)
             co_power="";
         }
     }
-    answer+=calculate_derivative(variable,power,coefficient,sign);
+    answer+=calculate_derivative(variable,power,coefficient,sign,temporary);
     //cout<<endl<<answer<<endl;
     //cout<<coefficient<<" "<<power<<endl;
     return answer;

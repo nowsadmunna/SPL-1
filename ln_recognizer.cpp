@@ -11,18 +11,22 @@ int check_ln_function(string equation)
        if(equation[i]=='l' && equation[i+1]=='n')
        {
            ln_count=i;
+           break;
        }
        else if(equation[i]=='s' && equation[i+1]=='q' && equation[i+2]=='r' && equation[i+3]=='t')
        {
            root_count=i;
+           break;
        }
        else if(equation[i]=='t' || equation[i]=='s' || equation[i]=='c')
        {
            trigonometry_count=i;
+           break;
        }
        else if(equation[i]=='e' && equation[i+1]=='^')
        {
         expotential_count=i;
+        break;
        }
    }
    if(ln_count<expotential_count && ln_count<trigonometry_count && ln_count<root_count)

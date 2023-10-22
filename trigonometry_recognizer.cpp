@@ -13,19 +13,23 @@ int check_trigonometry_funtion(string equation)
        if(equation[i]=='l' && equation[i+1]=='n')
        {
            ln_count=i;
+           break;
        }
        else if(equation[i]=='s' && equation[i+1]=='q' && equation[i+2]=='r' && equation[i+3]=='t')
        {
            root_count=i;
+           break;
        }
 
        else if(equation[i]=='t' || equation[i]=='s' || equation[i]=='c')
        {
            trigonometry_count=i;
+           break;
        }
        else if(equation[i]=='e' && equation[i+1]=='^')
        {
         expotential_count=i;
+        break;
        }
    }
    if(ln_count<trigonometry_count)
@@ -85,12 +89,32 @@ int derivative_sign_of_trigonometry()
 string as_trigonometry_function(string equation,string temporary)
 {
     string inside_of_trigonometry,answer;
+    int flag=0;
     inside_of_trigonometry=inside_of_bracket(equation);
     if(derivative_sign_of_trigonometry()==1)
     {
-        temporary+="cos("+inside_of_trigonometry+")*";
-        cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
-        answer="cos("+inside_of_trigonometry+")*("+partition_based_on_operator(inside_of_trigonometry,temporary)+")";
+        if(check_algebric_equation(inside_of_trigonometry))
+        {
+            if(partition_based_on_operator(inside_of_trigonometry,temporary)=="0")
+            {
+                cout<<temporary<<"0"<<endl;
+                answer="0";
+                flag=1;
+            }
+            else if(partition_based_on_operator(inside_of_trigonometry,temporary)=="1")
+            {
+                temporary+="cos("+inside_of_trigonometry+")";
+                cout<<temporary<<endl;
+                answer="cos("+inside_of_trigonometry+")";
+                flag=1;
+            }
+        }
+        if(flag==0)
+        {
+            temporary+="cos("+inside_of_trigonometry+")*";
+            cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+            answer="cos("+inside_of_trigonometry+")*("+partition_based_on_operator(inside_of_trigonometry,temporary)+")";
+        }
     }
     else if(derivative_sign_of_trigonometry()==3)
     {
