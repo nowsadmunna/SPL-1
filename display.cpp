@@ -151,7 +151,7 @@ string initial_checking(string equation,string temporary)
     }
     for(i=0;i<answer_for.size();i++)
     {
-        if(answer_for[i]=='0' && answer_for[i-1]=='*')
+        if(answer_for[i]=='0' && answer_for[i-2]=='*')
         {
             answer_for="0";
         }

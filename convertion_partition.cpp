@@ -115,6 +115,7 @@ string partitioning_equation(string equation,string temporary)
     char variable='\0',sign='\0';
     int power=1,coefficient=1;
     string co_coefficient,co_power;
+   // cout<<"d/dx("<<equation<<")=";
     for(i=0;equation[i]!='\0'; )
     { 
         if(get_token[i]==1)
@@ -193,6 +194,8 @@ string partitioning_equation(string equation,string temporary)
         }
     }
     answer+=calculate_derivative(variable,power,coefficient,sign,temporary);
+   // cout<<endl;
+    //cout<<"              ="<<answer<<endl;
     //cout<<endl<<answer<<endl;
     //cout<<coefficient<<" "<<power<<endl;
     return answer;

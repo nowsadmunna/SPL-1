@@ -44,8 +44,31 @@ string as_expotential_function(string equation,string temporary)
     // cout<<"As it is a expotential function.it will follow the expotential rule: "<<endl;
     // cout<<"d/dx(e^(x))=e^(x)"<<endl;
     // cout<<"d/dx("<<equation<<")= "<<"e^("<<inside_of_ex<<")* d/dx("<<inside_of_ex<<")"<<endl;
-    temporary+="e^("+inside_of_ex+")*";
-    cout<<temporary<<"d/dx("<<inside_of_ex<<")"<<endl;
-    answer+="e^("+inside_of_ex+")*("+partition_based_on_operator(inside_of_ex,temporary)+")";
+    if(inside_of_ex.size()==1 && inside_of_ex[0]=='x')
+    {
+        temporary+="e^(x)";
+        cout<<temporary<<endl;
+        answer="e^(x)";
+    }
+    else if(check_algebric_equation(inside_of_ex)==1)
+    {
+        temporary+="e^("+inside_of_ex+")*";
+        cout<<temporary<<"d/dx("<<inside_of_ex<<")"<<endl;
+        cout<<temporary<<"("<<partitioning_equation(inside_of_ex,temporary)<<")"<<endl;
+        if(partitioning_equation(inside_of_ex,temporary)=="0")
+        {
+            answer="0";
+        }
+        else 
+        {
+            answer="e^("+inside_of_ex+")*("+partitioning_equation(inside_of_ex,temporary)+")";
+        }
+    }
+    else 
+    {
+        temporary+="e^("+inside_of_ex+")*";
+        cout<<temporary<<"d/dx("<<inside_of_ex<<")"<<endl;
+        answer="e^("+inside_of_ex+")*("+partition_based_on_operator(inside_of_ex,temporary)+")";
+    }   
     return answer;
 }
