@@ -151,16 +151,17 @@ string initial_checking(string equation,string temporary)
     }
     for(i=0;i<answer_for.size();i++)
     {
-        if(answer_for[i]=='0' && answer_for[i-2]=='*')
+        if(answer_for[i]=='0' && (answer_for[i-2]=='*' || answer_for[i-1]=='*'))
         {
             answer_for="0";
         }
     }
+    //cout<<answer_for<<endl;
     return answer_for;
 }
 string partition_based_on_operator(string equation,string temporary)
 {
-    string part,answer;
+    string part,answer,part_answer;
     stack<char>bracket;
     int i;
     for(i=0;i<equation.size();i++)
@@ -181,8 +182,9 @@ string partition_based_on_operator(string equation,string temporary)
 
             if(bracket.size()==0)
             {
-                //cout<<part<<endl;
-                answer+=initial_checking(part,temporary);
+                cout<<"d/dx("<<part<<")="<<endl;
+                part_answer=initial_checking(part,temporary);
+                answer+=part_answer;
                 answer+=equation[i];
                 part="";
             }
@@ -196,8 +198,9 @@ string partition_based_on_operator(string equation,string temporary)
             part+=equation[i];
         }
     }
-   // cout<<part<<endl;
-    answer+=initial_checking(part,temporary);
+    cout<<"d/dx("<<part<<")=";
+    part_answer=initial_checking(part,temporary);
+    answer+=part_answer;
     return answer;
 }
 int check_algebric_equation(string equation)

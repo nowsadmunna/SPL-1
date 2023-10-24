@@ -2,6 +2,7 @@
 #include "header.h"
 using namespace std;
 int get_token[500];
+string temp_for_algebric;
 int char_type(char c)
 {
     if(an_alphabet(c))
@@ -185,6 +186,7 @@ string partitioning_equation(string equation,string temporary)
         {
             //cout<<coefficient<<" "<<power<<endl;
             answer+=calculate_derivative(variable,power,coefficient,sign,temporary);
+            //temp_for_algebric+=answer;
             sign='\0';
             coefficient=1;
             power=1;
@@ -194,10 +196,15 @@ string partitioning_equation(string equation,string temporary)
         }
     }
     answer+=calculate_derivative(variable,power,coefficient,sign,temporary);
+    temp_for_algebric+=answer;
    // cout<<endl;
     //cout<<"              ="<<answer<<endl;
     //cout<<endl<<answer<<endl;
     //cout<<coefficient<<" "<<power<<endl;
     return answer;
+}
+string get_algebric_part()
+{
+    return temp_for_algebric;
 }
 

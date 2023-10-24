@@ -47,13 +47,13 @@ string as_ln_function(string equation,string temporary)
     if(inside_of_ln.size()==1 && inside_of_ln[0]=='x')
     {
         temporary+="1/x";
-        cout<<temporary<<endl;
+        cout<<"1/x"<<endl;
         answer="1/x";
     }
     else if(check_algebric_equation(inside_of_ln)==1)
     {
         temporary+="(1/("+inside_of_ln+"))*";
-        cout<<temporary<<"d/dx("<<inside_of_ln<<")"<<endl;
+        cout<<"(1/("<<inside_of_ln<<"))*"<<"d/dx("<<inside_of_ln<<")"<<endl;
         cout<<temporary<<"("<<partitioning_equation(inside_of_ln,temporary)<<")"<<endl;
         if(partitioning_equation(inside_of_ln,temporary)=="0")
         {
@@ -67,7 +67,7 @@ string as_ln_function(string equation,string temporary)
     else 
     {
         temporary+="(1/("+inside_of_ln+"))*";
-        cout<<temporary<<"d/dx("<<inside_of_ln<<")"<<endl;
+        cout<<"(1/("<<inside_of_ln<<"))*"<<"d/dx("<<inside_of_ln<<")"<<endl;
         answer="(1/("+inside_of_ln+"))*("+partition_based_on_operator(inside_of_ln,temporary)+")";
     }   
     return answer;

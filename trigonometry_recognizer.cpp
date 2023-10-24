@@ -96,14 +96,14 @@ string as_trigonometry_function(string equation,string temporary)
        if(inside_of_trigonometry.size()==1 && inside_of_trigonometry[0]=='x')
        {
             temporary+="cos(x)";
-            cout<<temporary<<endl;
+            cout<<"cos(x)"<<endl;
             answer="cos(x)";
        }
        else if(check_algebric_equation(inside_of_trigonometry)==1)
        {
             temporary+="cos("+inside_of_trigonometry+")*";
-            cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
-            cout<<temporary<<"("<<partitioning_equation(inside_of_trigonometry,temporary)<<")"<<endl;
+            cout<<"cos("<<inside_of_trigonometry<<")*"<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+            cout<<"cos("+inside_of_trigonometry+")*"<<"("<<partitioning_equation(inside_of_trigonometry,temporary)<<")"<<endl;
             if(partitioning_equation(inside_of_trigonometry,temporary)=="0")
             {
                 answer="0";
@@ -114,7 +114,7 @@ string as_trigonometry_function(string equation,string temporary)
        else
        {
             temporary+="cos("+inside_of_trigonometry+")*";
-            cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+            cout<<"cos("<<inside_of_trigonometry<<")*"<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             answer="cos("+inside_of_trigonometry+")*("+partition_based_on_operator(inside_of_trigonometry,temporary)+")";
        }
     }
