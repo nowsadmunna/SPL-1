@@ -182,7 +182,7 @@ string partition_based_on_operator(string equation,string temporary)
 
             if(bracket.size()==0)
             {
-                cout<<"d/dx("<<part<<")="<<endl;
+                cout<<"d/dx("<<part<<")=";
                 part_answer=initial_checking(part,temporary);
                 answer+=part_answer;
                 answer+=equation[i];
