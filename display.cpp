@@ -149,13 +149,7 @@ string initial_checking(string equation,string temporary)
             answer_for+=partitioning_equation(equation,temporary);
         }
     }
-    for(i=0;i<answer_for.size();i++)
-    {
-        if(answer_for[i]=='0' && (answer_for[i-2]=='*' || answer_for[i-1]=='*'))
-        {
-            answer_for="0";
-        }
-    }
+    
     //cout<<answer_for<<endl;
     return answer_for;
 }
@@ -163,7 +157,7 @@ string partition_based_on_operator(string equation,string temporary)
 {
     string part,answer,part_answer;
     stack<char>bracket;
-    int i;
+    int i,j;
     for(i=0;i<equation.size();i++)
     {
         if(equation[i]=='(')
@@ -184,6 +178,13 @@ string partition_based_on_operator(string equation,string temporary)
             {
                 cout<<"d/dx("<<part<<")=";
                 part_answer=initial_checking(part,temporary);
+                // for(j=0;j<part_answer.size();j++)
+                // {
+                //     if(part_answer[j]=='0' && (part_answer[j-2]=='*' || part_answer[j-1]=='*'))
+                //     {
+                //         part_answer="0";
+                //     }
+                // }
                 answer+=part_answer;
                 answer+=equation[i];
                 part="";
@@ -200,6 +201,13 @@ string partition_based_on_operator(string equation,string temporary)
     }
     cout<<"d/dx("<<part<<")=";
     part_answer=initial_checking(part,temporary);
+    // for(j=0;j<part_answer.size();j++)
+    // {
+    //     if(part_answer[j]=='0' && (part_answer[j-2]=='*' || part_answer[j-1]=='*'))
+    //     {
+    //         part_answer="0";
+    //     }
+    // }
     answer+=part_answer;
     return answer;
 }

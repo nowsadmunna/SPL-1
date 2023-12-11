@@ -77,10 +77,7 @@ int check_trigonometry_funtion(string equation)
            return 1;
        }
    }
-   if(which_trigonometry==0)
-   {
-       return 0;
-   }
+    return 0;
 }
 int derivative_sign_of_trigonometry()
 {

@@ -34,7 +34,7 @@ int main()
      // cout<<"       (iv)  d/dx(cosec(x))=    - cosec(x)*cot(x)"<<endl;
      // cout<<"       (v)   d/dx(tan(x))  =    sec^2(x)"<<endl;
      // cout<<"       (vi)  d/dx(cot(x))  =    - cosec^2(x)"<<endl;
-     string equation="sin(5*x^10+5)";
+     string equation="sin(sin(56)+87)";
      string temporary;
      string answer=partition_based_on_operator(equation,temporary);
      cout<<"Answer= "<<answer<<endl;
