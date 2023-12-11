@@ -17,7 +17,7 @@ bool check_udivv_function(string equation)
     }
     return false;
 }
-string as_udivv(string equation,string temporary)
+string as_udivv(string equation)
 {
     cout<<"As it follows the devide Rule: "<<endl;
     cout<<"          (v*d/dx(u)-u*d/dx(v))"<<endl;
@@ -47,10 +47,10 @@ string as_udivv(string equation,string temporary)
     cout<<"d/dx("<<equation<<")=----------------------------------------------------------"<<endl;
     cout<<"                                             "<<v_part<<"^2"<<endl;
     cout<<"d/dx"<<u_part<<"=";
-    partition_based_on_operator(remove_bracket(u_part),temporary);
+    partition_based_on_operator(remove_bracket(u_part));
     cout<<endl;
     cout<<"d/dx"<<v_part<<"=";
-    partition_based_on_operator(remove_bracket(v_part),temporary);
+    partition_based_on_operator(remove_bracket(v_part));
     cout<<endl;
     // cout<<"("<<derivative_of_upart<<")*"<<v_part<<" + "<<"("<<derivative_of_vpart<<")"<<"*"<<u_part<<endl;
     return "";
