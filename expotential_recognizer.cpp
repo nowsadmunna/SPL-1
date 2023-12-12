@@ -52,14 +52,7 @@ string as_expotential_function(string equation)
         cout<<"d/dx("<<inside_of_ex<<")"<<endl;
         cout<<"d/dx("<<inside_of_ex<<")=";
         algebric_part=partitioning_equation(inside_of_ex);
-        if(algebric_part=="0")
-        {
-            answer="0";
-        }
-        else 
-        {
-            answer="e^("+inside_of_ex+")*("+algebric_part+")";
-        }
+        answer="e^("+inside_of_ex+")*("+algebric_part+")";
     }
     else 
     {

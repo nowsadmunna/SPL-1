@@ -37,9 +37,6 @@ string as_square_root_function(string equation)
 {
     string inside_of_square_root,answer,algebric_part;
     inside_of_square_root=inside_of_bracket(equation);
-    // cout<<"As it is a root function.it will follow the square root rule: "<<endl;
-    // cout<<"d/dx(sqrt(x))=1/(2*sqrt(x))"<<endl;
-    // cout<<"d/dx("<<equation<<")= "<<"(1/2*sqrt("<<inside_of_square_root<<"))* d/dx("<<inside_of_square_root<<")"<<endl;
      if(inside_of_square_root.size()==1 && inside_of_square_root[0]=='x')
     {
         cout<<"1/(2*sqrt(x))"<<endl;
@@ -50,15 +47,8 @@ string as_square_root_function(string equation)
         cout<<"(1/2*sqrt("+inside_of_square_root+"))*";
         cout<<"d/dx("<<inside_of_square_root<<")"<<endl;
         cout<<"d/dx("<<inside_of_square_root<<") =";
-        algebric_part=partitioning_equation(inside_of_square_root);
-        if(algebric_part=="0")
-        {
-            answer="0";
-        }
-        else 
-        {
-            answer="(1/2*sqrt("+inside_of_square_root+"))*("+algebric_part+")";
-        }
+        algebric_part=partitioning_equation(inside_of_square_root);       
+        answer="(1/2*sqrt("+inside_of_square_root+"))*("+algebric_part+")";
     }
     else 
     {
