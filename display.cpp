@@ -21,8 +21,9 @@ string removespaces(string equation)
 void display()
 {
     cout<<"-------------------Welcome to Derivative Calculator------------------"<<endl<<endl<<endl<<endl;
-    int choice;
-    string equation,answer;
+    int choice,i;
+    stack<char>answer_minimization;
+    string equation,answer,final_answer,part;
     while(1)
     {
         cout<<"1. Show Formula"<<endl;
@@ -43,7 +44,31 @@ void display()
             cout<<"step by step derivative calculation of d/dx("<<equation<<") are given below : "<<endl;
             answer=partition_based_on_operator(equation);
             cout<<endl<<endl;
-            cout<<"Answer ="<<answer<<endl<<endl<<endl;
+            cout<<"Answer ="<<answer<<endl;
+            for(i=0;i<answer.size();i++)
+            {
+                if(answer[i]=='(')
+                {
+                    answer_minimization.push(answer[i]);
+                    part+=answer[i];
+                }
+                else if(answer[i]==')')
+                {
+                    answer_minimization.pop();
+                    part+=answer[i];
+                }
+                else if(answer[i]=='+' || answer[i]=='-')
+                {
+                    if(answer_minimization.size()==0)
+                    {
+                        
+                    }
+                    else 
+                    {
+                        part+=equation[i];
+                    }
+                }
+            }
         }
         else if(choice==3)
         {
@@ -196,5 +221,29 @@ void show_formula()
     cout<<"       (iv)  d/dx(cosec(x))=    - cosec(x)*cot(x)"<<endl;
     cout<<"       (v)   d/dx(tan(x))  =    sec^2(x)"<<endl;
     cout<<"       (vi)  d/dx(cot(x))  =    - cosec^2(x)"<<endl;
+}
+string after_star(string equation)
+{
+    int i,flag=0;
+    string part;
+    for(i=0;i<equation.size();i++)
+    {
+        if(equation[i]=='*')
+        {
+            flag=1;
+        }
+        else if(flag==1)
+        {
+            if(equation[i]=='(' || equation[i]==')')
+            {
+                continue;
+            }
+            else 
+            {
+                part+=equation[i];
+            }
+        }
+    }
+    return part;
 }
 
