@@ -114,46 +114,44 @@ using namespace std;
 //            }
 //         }
 // }
-string initial_checking(string equation,string temporary)
+string initial_checking(string equation)
 {
     string answer_for="";
     int i;
      if(check_uv_function(equation))
     {
-        answer_for+=as_uv_function(equation,temporary);
+        answer_for+=as_uv_function(equation);
     }
     else if(check_udivv_function(equation))
     {
-        answer_for+=as_udivv(equation,temporary);
+        answer_for+=as_udivv(equation);
     }
     else 
     {
         if(check_trigonometry_funtion(equation))
         {
-            answer_for+=as_trigonometry_function(equation,temporary);
+            answer_for+=as_trigonometry_function(equation);
         }
         else if(check_ln_function(equation))
         {
-            answer_for+=as_ln_function(equation,temporary);
+            answer_for+=as_ln_function(equation);
         }
         else if(check_expotentail_function(equation))
         {
-            answer_for+=as_expotential_function(equation,temporary);
+            answer_for+=as_expotential_function(equation);
         }
         else if(check_square_root_function(equation))
         {
-            answer_for+=as_square_root_function(equation,temporary);
+            answer_for+=as_square_root_function(equation);
         }
         else 
         {
-            answer_for+=partitioning_equation(equation,temporary);
+            answer_for+=partitioning_equation(equation);
         }
     }
-    
-    //cout<<answer_for<<endl;
     return answer_for;
 }
-string partition_based_on_operator(string equation,string temporary)
+string partition_based_on_operator(string equation)
 {
     string part,answer,part_answer;
     stack<char>bracket;
@@ -172,19 +170,10 @@ string partition_based_on_operator(string equation,string temporary)
         }
         else if(equation[i]=='+' || equation[i]=='-')
         {
-            //cout<<bracket.size()<<endl;
-
             if(bracket.size()==0)
             {
                 cout<<"d/dx("<<part<<")=";
-                part_answer=initial_checking(part,temporary);
-                // for(j=0;j<part_answer.size();j++)
-                // {
-                //     if(part_answer[j]=='0' && (part_answer[j-2]=='*' || part_answer[j-1]=='*'))
-                //     {
-                //         part_answer="0";
-                //     }
-                // }
+                part_answer=initial_checking(part);
                 answer+=part_answer;
                 answer+=equation[i];
                 part="";
@@ -200,14 +189,7 @@ string partition_based_on_operator(string equation,string temporary)
         }
     }
     cout<<"d/dx("<<part<<")=";
-    part_answer=initial_checking(part,temporary);
-    // for(j=0;j<part_answer.size();j++)
-    // {
-    //     if(part_answer[j]=='0' && (part_answer[j-2]=='*' || part_answer[j-1]=='*'))
-    //     {
-    //         part_answer="0";
-    //     }
-    // }
+    part_answer=initial_checking(part);
     answer+=part_answer;
     return answer;
 }

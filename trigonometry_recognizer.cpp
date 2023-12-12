@@ -97,7 +97,7 @@ string as_trigonometry_function(string equation)
        }
        else if(check_algebric_equation(inside_of_trigonometry)==1)
        {
-            cout<<"cos("<<inside_of_trigonometry<<")*"<<endl;
+            cout<<"cos("<<inside_of_trigonometry<<")*";
             cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             cout<<"d/dx("<<inside_of_trigonometry<<") =";
             algebric_part=partitioning_equation(inside_of_trigonometry);
@@ -118,7 +118,7 @@ string as_trigonometry_function(string equation)
     {
        if(inside_of_trigonometry.size()==1 && inside_of_trigonometry[0]=='x')
        {
-            cout<<"sec^2(x)";
+            cout<<"sec^2(x)"<<endl;
             answer="sec^2(x)";
        }
        else if(check_algebric_equation(inside_of_trigonometry)==1)
@@ -145,7 +145,7 @@ string as_trigonometry_function(string equation)
     {
         if(inside_of_trigonometry.size()==1 && inside_of_trigonometry[0]=='x')
        {
-            cout<<"sec(x)*tan(x)";
+            cout<<"sec(x)*tan(x)"<<endl;
             answer="sec(x)*tan(x)";
        }
        else if(check_algebric_equation(inside_of_trigonometry)==1)
@@ -172,7 +172,7 @@ string as_trigonometry_function(string equation)
     {
          if(inside_of_trigonometry.size()==1 && inside_of_trigonometry[0]=='x')
        {
-            cout<<"(-cosec(x)*cot(x))";
+            cout<<"(-cosec(x)*cot(x))"<<endl;
             answer="(-cosec(x)*cot(x))";
        }
        else if(check_algebric_equation(inside_of_trigonometry)==1)
@@ -199,7 +199,7 @@ string as_trigonometry_function(string equation)
     {
        if(inside_of_trigonometry.size()==1 && inside_of_trigonometry[0]=='x')
        {
-            cout<<"(-sin(x))";
+            cout<<"(-sin(x))"<<endl;
             answer="(-sin(x))";
        }
        else if(check_algebric_equation(inside_of_trigonometry)==1)
@@ -226,7 +226,7 @@ string as_trigonometry_function(string equation)
     {
         if(inside_of_trigonometry.size()==1 && inside_of_trigonometry[0]=='x')
        {
-            cout<<"(-cosec^2(x))";
+            cout<<"(-cosec^2(x))"<<endl;
             answer="(-cosec^2(x))";
        }
        else if(check_algebric_equation(inside_of_trigonometry)==1)

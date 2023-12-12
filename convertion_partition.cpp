@@ -196,11 +196,14 @@ string partitioning_equation(string equation)
         }
     }
     answer+=calculate_derivative(variable,power,coefficient,sign);
-    temp_for_algebric+=answer;
-    //cout<<endl;
-    cout<<"="<<answer<<endl;
-    //cout<<endl<<answer<<endl;
-    //cout<<coefficient<<" "<<power<<endl;
+    if(answer=="0")
+    {
+        cout<<answer<<endl;
+    }
+    else
+    {
+        cout<<"="<<answer<<endl;
+    }
     return answer;
 }
 string get_algebric_part()

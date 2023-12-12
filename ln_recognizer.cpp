@@ -46,13 +46,14 @@ string as_ln_function(string equation)
     // cout<<"d/dx("<<equation<<")= "<<endl;
     if(inside_of_ln.size()==1 && inside_of_ln[0]=='x')
     {
-        cout<<"1/x";
+        cout<<"1/x"<<endl;
         answer="1/x";
     }
     else if(check_algebric_equation(inside_of_ln)==1)
     {
         cout<<"(1/("+inside_of_ln+"))*";
         cout<<"d/dx("<<inside_of_ln<<")"<<endl;
+        cout<<"d/dx("<<inside_of_ln<<")=";
         algebric_part=partitioning_equation(inside_of_ln);
         if(algebric_part=="0")
         {

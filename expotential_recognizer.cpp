@@ -39,35 +39,35 @@ int check_expotentail_function(string equation)
 }
 string as_expotential_function(string equation)
 {
-    string inside_of_ex,answer;
+    string inside_of_ex,answer,algebric_part;
     inside_of_ex=inside_of_bracket(equation);
     // cout<<"As it is a expotential function.it will follow the expotential rule: "<<endl;
     // cout<<"d/dx(e^(x))=e^(x)"<<endl;
     // cout<<"d/dx("<<equation<<")= "<<"e^("<<inside_of_ex<<")* d/dx("<<inside_of_ex<<")"<<endl;
     if(inside_of_ex.size()==1 && inside_of_ex[0]=='x')
     {
-        temporary+="e^(x)";
-        cout<<temporary<<endl;
+        cout<<"e^(x)"<<endl;
         answer="e^(x)";
     }
     else if(check_algebric_equation(inside_of_ex)==1)
     {
-        temporary+="e^("+inside_of_ex+")*";
-        cout<<temporary<<"d/dx("<<inside_of_ex<<")"<<endl;
-        cout<<temporary<<"("<<partitioning_equation(inside_of_ex)<<")"<<endl;
-        if(partitioning_equation(inside_of_ex)=="0")
+        cout<<"e^("+inside_of_ex+")*";
+        cout<<"d/dx("<<inside_of_ex<<")"<<endl;
+        cout<<"d/dx("<<inside_of_ex<<")=";
+        algebric_part=partitioning_equation(inside_of_ex);
+        if(algebric_part=="0")
         {
             answer="0";
         }
         else 
         {
-            answer="e^("+inside_of_ex+")*("+partitioning_equation(inside_of_ex,temporary)+")";
+            answer="e^("+inside_of_ex+")*("+algebric_part+")";
         }
     }
     else 
     {
-        temporary+="e^("+inside_of_ex+")*";
-        cout<<temporary<<"d/dx("<<inside_of_ex<<")"<<endl;
+        cout<<"e^("+inside_of_ex+")*";
+        cout<<"d/dx("<<inside_of_ex<<")"<<endl;
         answer="e^("+inside_of_ex+")*("+partition_based_on_operator(inside_of_ex)+")";
     }   
     return answer;
