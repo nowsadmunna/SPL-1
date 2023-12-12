@@ -21,7 +21,7 @@ string removespaces(string equation)
 void display()
 {
     cout<<"-------------------Welcome to Derivative Calculator------------------"<<endl<<endl<<endl<<endl;
-    int choice,i;
+    int choice,i,j;
     stack<char>answer_minimization;
     string equation,answer,final_answer,part;
     while(1)
@@ -61,14 +61,92 @@ void display()
                 {
                     if(answer_minimization.size()==0)
                     {
-                        
+                        int flag=0;
+                        for(j=0;j<part.size();j++)
+                        {
+                            if(part[j]=='*' && part[j+1]=='0')
+                            {
+                                final_answer+="0";
+                                flag=1;
+                                break;
+                            }
+                            else if(part[j]=='*' && part[j+1]=='(' && part[j+2]=='0' && part[j+3]==')')
+                            {
+                                final_answer+="0";
+                                flag=1;
+                                break;
+                            }   
+                        }
+                        if(flag==0)
+                        {
+                            final_answer+=part;
+                        }
+                        final_answer+=answer[i];
+                        part="";
                     }
                     else 
                     {
-                        part+=equation[i];
+                        part+=answer[i];
                     }
                 }
+                else 
+                {
+                    part+=answer[i];
+                }
             }
+            int flagg=0;
+            for(i=0;i<part.size();i++)
+            {
+                if(part[i]=='*' && part[i+1]=='0')
+                {
+                    final_answer+="0";
+                    flagg=1;
+                    break;
+                }
+                else if(part[i]=='*' && part[i+1]=='(' && part[i+2]=='0' && part[i+3]==')')
+                {
+                    final_answer+="0";
+                    flagg=1;
+                    break;
+                }   
+            }
+            if(flagg==0)
+            {
+                final_answer+=part;
+            }
+            part="";
+            answer="";
+            cout<<"       ="<<final_answer<<endl;
+            for(i=0;i<final_answer.size();i++)
+            {
+                if((final_answer[i]=='+' || final_answer[i]=='-') && final_answer[i+1]=='0')
+                {
+                    i++;
+                }
+                else 
+                {
+                    answer+=final_answer[i];
+                }
+            }
+            cout<<"       ="<<answer<<endl;
+            final_answer="";
+            for(i=0;i<answer.size();i++)
+            {
+                if(answer[i]=='0' && answer[i+1]=='+')
+                {
+                    i++;
+                    continue;
+                }
+                else if(answer[i]=='0' && answer[i]=='-')
+                {
+                    continue;
+                }
+                else 
+                {
+                    final_answer+=answer[i];
+                }
+            }
+            cout<<"       ="<<final_answer<<endl;
         }
         else if(choice==3)
         {
@@ -158,6 +236,7 @@ string partition_based_on_operator(string equation)
     cout<<"d/dx("<<part<<")=";
     part_answer=initial_checking(part);
     answer+=part_answer;
+    part="";
     return answer;
 }
 int check_algebric_equation(string equation)
@@ -222,28 +301,5 @@ void show_formula()
     cout<<"       (v)   d/dx(tan(x))  =    sec^2(x)"<<endl;
     cout<<"       (vi)  d/dx(cot(x))  =    - cosec^2(x)"<<endl;
 }
-string after_star(string equation)
-{
-    int i,flag=0;
-    string part;
-    for(i=0;i<equation.size();i++)
-    {
-        if(equation[i]=='*')
-        {
-            flag=1;
-        }
-        else if(flag==1)
-        {
-            if(equation[i]=='(' || equation[i]==')')
-            {
-                continue;
-            }
-            else 
-            {
-                part+=equation[i];
-            }
-        }
-    }
-    return part;
-}
+
 

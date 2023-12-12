@@ -10,7 +10,7 @@ string calculate_derivative(char variable,int power,int coefficient)
     if(variable=='\0')
     {
         answer+="0";
-        cout<<"0";
+        cout<<"0"<<endl;
         return answer;
     }
     else if(derivative_coefficient!=1)

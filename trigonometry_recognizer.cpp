@@ -101,11 +101,6 @@ string as_trigonometry_function(string equation)
             cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             cout<<"d/dx("<<inside_of_trigonometry<<") =";
             algebric_part=partitioning_equation(inside_of_trigonometry);
-            if(algebric_part=="0")
-            {
-                answer="0";
-            }
-            else 
             answer="cos("+inside_of_trigonometry+")*("+algebric_part+")";
        }        
        else
@@ -127,11 +122,6 @@ string as_trigonometry_function(string equation)
             cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             cout<<"d/dx("<<inside_of_trigonometry<<") =";
             algebric_part=partitioning_equation(inside_of_trigonometry);
-            if(algebric_part=="0")
-            {
-                answer="0";
-            }
-            else 
             answer="sec^2("+inside_of_trigonometry+")*("+algebric_part+")";
        }        
        else
@@ -154,11 +144,6 @@ string as_trigonometry_function(string equation)
             cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             cout<<"d/dx("<<inside_of_trigonometry<<") =";
             algebric_part=partitioning_equation(inside_of_trigonometry);
-            if(algebric_part=="0")
-            {
-                answer="0";
-            }
-            else 
             answer="sec("+inside_of_trigonometry+")*"+"tan("+inside_of_trigonometry+")*("+algebric_part+")";
        }        
        else
@@ -181,11 +166,6 @@ string as_trigonometry_function(string equation)
             cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             cout<<"d/dx("<<inside_of_trigonometry<<") =";
             algebric_part=partitioning_equation(inside_of_trigonometry);
-            if(algebric_part=="0")
-            {
-                answer="0";
-            }
-            else 
             answer="(-cosec("+inside_of_trigonometry+")*"+"cot("+inside_of_trigonometry+")*("+algebric_part+"))";
        }        
        else
@@ -208,11 +188,6 @@ string as_trigonometry_function(string equation)
             cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             cout<<"d/dx("<<inside_of_trigonometry<<") =";
             algebric_part=partitioning_equation(inside_of_trigonometry);
-            if(algebric_part=="0")
-            {
-                answer="0";
-            }
-            else 
             answer="(-sin("+inside_of_trigonometry+")*("+algebric_part+"))";
        }        
        else
@@ -235,11 +210,6 @@ string as_trigonometry_function(string equation)
             cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             cout<<"d/dx("<<inside_of_trigonometry<<") =";
             algebric_part=partitioning_equation(inside_of_trigonometry);
-            if(algebric_part=="0")
-            {
-                answer="0";
-            }
-            else 
             answer="(-cosec^2("+inside_of_trigonometry+")*("+algebric_part+"))";
        }        
        else
