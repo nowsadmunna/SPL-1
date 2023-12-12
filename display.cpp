@@ -88,7 +88,7 @@ string initial_checking(string equation)
         }
         else 
         {
-            answer_for+=partitioning_equation(equation);
+            answer_for+=partitioning_equation(remove_bracket(equation));
         }
     }
     return answer_for;

@@ -55,13 +55,19 @@ string as_uv_function(string equation)
 }
 string remove_bracket(string equation)
 {
-    //jdi jahmela hoy tahole stack diye korar try korbo
-    string part;
-    int i;
-    for(i=1;i<equation.size()-1;i++)
+    string after_removing_bracket;
+    if(equation[0]=='(' && equation[equation.size()-1]==')')
     {
-        part+=equation[i];
+        int i;
+        for(i=1;i<equation.size()-1;i++)
+        {
+            after_removing_bracket+=equation[i];
+        }
+        return after_removing_bracket;
     }
-    return part;
+    else 
+    {
+        return equation;
+    }
 }
 
