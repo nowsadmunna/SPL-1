@@ -32,6 +32,9 @@ void display()
         cout<<"Enter your choice: ";
         cin>>choice;
         getchar();
+        answer="";
+        final_answer="";
+        part="";
         if(choice==1)
         {
             show_formula();

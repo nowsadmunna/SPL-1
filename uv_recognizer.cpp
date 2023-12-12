@@ -1,7 +1,6 @@
 #include<iostream>
 #include"header.h"
 using namespace std;
-string ans8="";
 bool check_uv_function(string equation)
 {
     int i;
@@ -20,8 +19,8 @@ bool check_uv_function(string equation)
 }
 string as_uv_function(string equation)
 {
-    // cout<<"As it follows uv method: "<<endl;
-    // cout<<"d/dx(u*v)="<<"v*d/dx(u)+u*d/dx(v)"<<endl;
+    cout<<"As it follows uv method: "<<endl;
+    cout<<"d/dx(u*v)="<<"v*d/dx(u)+u*d/dx(v)"<<endl;
     string u_part,v_part,answer,derivative_of_upart,derivative_of_vpart;
     int i;
     int flag=0;
