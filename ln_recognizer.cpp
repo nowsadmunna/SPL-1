@@ -39,35 +39,34 @@ int check_ln_function(string equation)
 }
 string as_ln_function(string equation)
 {
-    string inside_of_ln,answer;
+    string inside_of_ln,answer,algebric_part;
     inside_of_ln=inside_of_bracket(equation);
     // cout<<"As it is a ln function.it will follow the logarithm rule: "<<endl;
     // cout<<"d/dx(ln(x))=1/x"<<endl;
     // cout<<"d/dx("<<equation<<")= "<<endl;
     if(inside_of_ln.size()==1 && inside_of_ln[0]=='x')
     {
-        temporary+="1/x";
-        cout<<"1/x"<<endl;
+        cout<<"1/x";
         answer="1/x";
     }
     else if(check_algebric_equation(inside_of_ln)==1)
     {
-        temporary+="(1/("+inside_of_ln+"))*";
-        cout<<"(1/("<<inside_of_ln<<"))*"<<"d/dx("<<inside_of_ln<<")"<<endl;
-        cout<<temporary<<"("<<partitioning_equation(inside_of_ln)<<")"<<endl;
-        if(partitioning_equation(inside_of_ln)=="0")
+        cout<<"(1/("+inside_of_ln+"))*";
+        cout<<"d/dx("<<inside_of_ln<<")"<<endl;
+        algebric_part=partitioning_equation(inside_of_ln);
+        if(algebric_part=="0")
         {
             answer="0";
         }
         else 
         {
-            answer="(1/("+inside_of_ln+"))*("+partitioning_equation(inside_of_ln)+")";
+            answer="(1/("+inside_of_ln+"))*("+algebric_part+")";
         }
     }
     else 
     {
-        temporary+="(1/("+inside_of_ln+"))*";
-        cout<<"(1/("<<inside_of_ln<<"))*"<<"d/dx("<<inside_of_ln<<")"<<endl;
+        cout<<"(1/("+inside_of_ln+"))*";
+        cout<<"d/dx("<<inside_of_ln<<")"<<endl;
         answer="(1/("+inside_of_ln+"))*("+partition_based_on_operator(inside_of_ln)+")";
     }   
     return answer;

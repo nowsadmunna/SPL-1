@@ -85,7 +85,7 @@ int derivative_sign_of_trigonometry()
 }
 string as_trigonometry_function(string equation)
 {
-    string inside_of_trigonometry,answer,samdani;
+    string inside_of_trigonometry,answer,algebric_part;
     int flag=0;
     inside_of_trigonometry=inside_of_bracket(equation);
     if(derivative_sign_of_trigonometry()==1)
@@ -97,15 +97,16 @@ string as_trigonometry_function(string equation)
        }
        else if(check_algebric_equation(inside_of_trigonometry)==1)
        {
-            cout<<"cos("<<inside_of_trigonometry<<")*"<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
-            //cout<<"cos("+inside_of_trigonometry+")*"<<"("<<partitioning_equation(inside_of_trigonometry)<<")"<<endl;
-            samdani=partitioning_equation(inside_of_trigonometry);
-            if(samdani=="0")
+            cout<<"cos("<<inside_of_trigonometry<<")*"<<endl;
+            cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+            cout<<"d/dx("<<inside_of_trigonometry<<") =";
+            algebric_part=partitioning_equation(inside_of_trigonometry);
+            if(algebric_part=="0")
             {
                 answer="0";
             }
             else 
-            answer="cos("+inside_of_trigonometry+")*("+samdani+")";
+            answer="cos("+inside_of_trigonometry+")*("+algebric_part+")";
        }        
        else
        {
@@ -124,18 +125,19 @@ string as_trigonometry_function(string equation)
        {
             cout<<"sec^2("+inside_of_trigonometry+")*";
             cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
-            cout<<temporary<<"("<<partitioning_equation(inside_of_trigonometry)<<")"<<endl;
-            if(partitioning_equation(inside_of_trigonometry)=="0")
+            cout<<"d/dx("<<inside_of_trigonometry<<") =";
+            algebric_part=partitioning_equation(inside_of_trigonometry);
+            if(algebric_part=="0")
             {
                 answer="0";
             }
             else 
-            answer="sec^2("+inside_of_trigonometry+")*("+partitioning_equation(inside_of_trigonometry)+")";
+            answer="sec^2("+inside_of_trigonometry+")*("+algebric_part+")";
        }        
        else
        {
-            temporary+="sec^2("+inside_of_trigonometry+")*";
-            cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+            cout<<"sec^2("+inside_of_trigonometry+")*";
+            cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             answer="sec^2("+inside_of_trigonometry+")*("+partition_based_on_operator(inside_of_trigonometry)+")";
        }
     }
@@ -143,26 +145,26 @@ string as_trigonometry_function(string equation)
     {
         if(inside_of_trigonometry.size()==1 && inside_of_trigonometry[0]=='x')
        {
-            temporary+="sec(x)*tan(x)";
-            cout<<temporary<<endl;
+            cout<<"sec(x)*tan(x)";
             answer="sec(x)*tan(x)";
        }
        else if(check_algebric_equation(inside_of_trigonometry)==1)
        {
-            temporary+="sec("+inside_of_trigonometry+")*"+"tan("+inside_of_trigonometry+")*";
-            cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
-            cout<<temporary<<"("<<partitioning_equation(inside_of_trigonometry)<<")"<<endl;
-            if(partitioning_equation(inside_of_trigonometry)=="0")
+            cout<<"sec("+inside_of_trigonometry+")*"+"tan("+inside_of_trigonometry+")*";
+            cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+            cout<<"d/dx("<<inside_of_trigonometry<<") =";
+            algebric_part=partitioning_equation(inside_of_trigonometry);
+            if(algebric_part=="0")
             {
                 answer="0";
             }
             else 
-            answer="sec("+inside_of_trigonometry+")*"+"tan("+inside_of_trigonometry+")*("+partitioning_equation(inside_of_trigonometry)+")";
+            answer="sec("+inside_of_trigonometry+")*"+"tan("+inside_of_trigonometry+")*("+algebric_part+")";
        }        
        else
        {
-            temporary+="sec("+inside_of_trigonometry+")*"+"tan("+inside_of_trigonometry+")*";
-            cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+            cout<<"sec("+inside_of_trigonometry+")*"+"tan("+inside_of_trigonometry+")*";
+            cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             answer="sec("+inside_of_trigonometry+")*"+"tan("+inside_of_trigonometry+")*("+partitioning_equation(inside_of_trigonometry)+")";
        }
     }
@@ -170,26 +172,26 @@ string as_trigonometry_function(string equation)
     {
          if(inside_of_trigonometry.size()==1 && inside_of_trigonometry[0]=='x')
        {
-            temporary+="(-cosec(x)*cot(x))";
-            cout<<temporary<<endl;
+            cout<<"(-cosec(x)*cot(x))";
             answer="(-cosec(x)*cot(x))";
        }
        else if(check_algebric_equation(inside_of_trigonometry)==1)
        {
-            temporary+="(-cosec("+inside_of_trigonometry+")*"+"cot("+inside_of_trigonometry+"))*";
-            cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
-            cout<<temporary<<"("<<partitioning_equation(inside_of_trigonometry)<<")"<<endl;
-            if(partitioning_equation(inside_of_trigonometry)=="0")
+            cout<<"(-cosec("+inside_of_trigonometry+")*"+"cot("+inside_of_trigonometry+"))*";
+            cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+            cout<<"d/dx("<<inside_of_trigonometry<<") =";
+            algebric_part=partitioning_equation(inside_of_trigonometry);
+            if(algebric_part=="0")
             {
                 answer="0";
             }
             else 
-            answer="(-cosec("+inside_of_trigonometry+")*"+"cot("+inside_of_trigonometry+")*("+partitioning_equation(inside_of_trigonometry)+"))";
+            answer="(-cosec("+inside_of_trigonometry+")*"+"cot("+inside_of_trigonometry+")*("+algebric_part+"))";
        }        
        else
        {
-            temporary+="(-cosec("+inside_of_trigonometry+")*"+"cot("+inside_of_trigonometry+"))*";
-            cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+            cout<<"(-cosec("+inside_of_trigonometry+")*"+"cot("+inside_of_trigonometry+"))*";
+            cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             answer="(-cosec("+inside_of_trigonometry+")*"+"cot("+inside_of_trigonometry+")*("+partitioning_equation(inside_of_trigonometry)+"))";
        }
     }
@@ -197,26 +199,26 @@ string as_trigonometry_function(string equation)
     {
        if(inside_of_trigonometry.size()==1 && inside_of_trigonometry[0]=='x')
        {
-            temporary+="(-sin(x))";
-            cout<<temporary<<endl;
+            cout<<"(-sin(x))";
             answer="(-sin(x))";
        }
        else if(check_algebric_equation(inside_of_trigonometry)==1)
        {
-            temporary+="(-sin("+inside_of_trigonometry+"))*";
-            cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
-            cout<<temporary<<"("<<partitioning_equation(inside_of_trigonometry)<<")"<<endl;
-            if(partitioning_equation(inside_of_trigonometry)=="0")
+            cout<<"(-sin("+inside_of_trigonometry+"))*";
+            cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+            cout<<"d/dx("<<inside_of_trigonometry<<") =";
+            algebric_part=partitioning_equation(inside_of_trigonometry);
+            if(algebric_part=="0")
             {
                 answer="0";
             }
             else 
-            answer="(-sin("+inside_of_trigonometry+")*("+partitioning_equation(inside_of_trigonometry)+"))";
+            answer="(-sin("+inside_of_trigonometry+")*("+algebric_part+"))";
        }        
        else
        {
-            temporary+="-sin("+inside_of_trigonometry+")*";
-            cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+            cout<<"-sin("+inside_of_trigonometry+")*";
+            cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             answer="(-sin("+inside_of_trigonometry+")*("+partition_based_on_operator(inside_of_trigonometry)+"))";
        }
     }
@@ -224,27 +226,26 @@ string as_trigonometry_function(string equation)
     {
         if(inside_of_trigonometry.size()==1 && inside_of_trigonometry[0]=='x')
        {
-            temporary+="(-cosec^2(x))";
-            cout<<temporary<<endl;
+            cout<<"(-cosec^2(x))";
             answer="(-cosec^2(x))";
        }
        else if(check_algebric_equation(inside_of_trigonometry)==1)
        {
-            temporary="(-cosec^2("+inside_of_trigonometry+"))*";
-            cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+            cout<<"(-cosec^2("+inside_of_trigonometry+"))*";
+            cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             cout<<"d/dx("<<inside_of_trigonometry<<") =";
-            samdani=partitioning_equation(inside_of_trigonometry);
-            if(samdani=="0")
+            algebric_part=partitioning_equation(inside_of_trigonometry);
+            if(algebric_part=="0")
             {
                 answer="0";
             }
             else 
-            answer="(-cosec^2("+inside_of_trigonometry+")*("+samdani+"))";
+            answer="(-cosec^2("+inside_of_trigonometry+")*("+algebric_part+"))";
        }        
        else
        {
-            temporary="(-cosec^2("+inside_of_trigonometry+"))*";
-            cout<<temporary<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
+            cout<<"(-cosec^2("+inside_of_trigonometry+"))*";
+            cout<<" d/dx("<<inside_of_trigonometry<<")"<<endl;
             answer="(-cosec^2("+inside_of_trigonometry+")*("+partition_based_on_operator(inside_of_trigonometry)+"))";
        }
     }
