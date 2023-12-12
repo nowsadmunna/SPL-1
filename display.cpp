@@ -39,14 +39,22 @@ void display()
         {
             cout<<"Enter the equation: ";
             cin>>equation;
+            getchar();
+            cout<<"step by step derivative calculation of d/dx("<<equation<<") are given below : "<<endl;
             answer=partition_based_on_operator(equation);
+            cout<<endl<<endl;
+            cout<<"Answer ="<<answer<<endl<<endl<<endl;
         }
         else if(choice==3)
         {
             break;
         }
+        else 
+        {
+            cout<<"Enter a valid choice"<<endl;
+        }
     }
-    cout<<"-----------------Thank You---------------------------------"<<endl;
+    cout<<"--------------------------Thank You---------------------------------"<<endl;
 }
 string initial_checking(string equation)
 {
@@ -160,7 +168,7 @@ int check_algebric_equation(string equation)
 }
 void show_formula()
 {
-    cout<<"   Some basic formula of differentiation are given below"<<endl;
+    cout<<"   Some basic formula of differentiation are given below : "<<endl;
     cout<<"1. Constant Formula:"<<endl;
     cout<<"        d/dx(c)=0"<<endl;
     cout<<"2. Power Formula:"<<endl;

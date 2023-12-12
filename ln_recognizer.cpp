@@ -41,9 +41,6 @@ string as_ln_function(string equation)
 {
     string inside_of_ln,answer,algebric_part;
     inside_of_ln=inside_of_bracket(equation);
-    // cout<<"As it is a ln function.it will follow the logarithm rule: "<<endl;
-    // cout<<"d/dx(ln(x))=1/x"<<endl;
-    // cout<<"d/dx("<<equation<<")= "<<endl;
     if(inside_of_ln.size()==1 && inside_of_ln[0]=='x')
     {
         cout<<"1/x"<<endl;

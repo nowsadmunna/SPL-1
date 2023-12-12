@@ -4,7 +4,6 @@
 
 #include<bits/stdc++.h>
 using namespace std;
-
 void display();
 string removespaces(string equation);
 bool check_uv_function(string equation);
@@ -22,7 +21,7 @@ string partitioning_equation(string equation);
 void as_algebric(string equation);
 int check_u_or_uplusv(string equation);
 void show_as_uplusv(string equation);
-string calculate_derivative(char variable,int power,int coefficient,char sign);
+string calculate_derivative(char variable,int power,int coefficient);
 string initial_checking(string equation);
 string partition_based_on_operator(string equation);
 string remove_bracket(string equation);
