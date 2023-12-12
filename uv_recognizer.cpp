@@ -17,7 +17,6 @@ bool check_uv_function(string equation)
         }
     }
     return false;
-    //munna
 }
 string as_uv_function(string equation)
 {
