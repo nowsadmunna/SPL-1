@@ -43,21 +43,26 @@ string as_udivv(string equation)
     }
     cout<<"u="<<u_part<<endl;
     cout<<"v="<<v_part<<endl;
-    cout<<"                     "<<v_part<<"*d/dx"<<u_part<<"-"<<u_part<<"*d/dx"<<v_part<<endl;
+    for(i=0;i<equation.size()+8;i++)
+    {
+        cout<<" ";
+    }
+    cout<<v_part<<"*d/dx"<<u_part<<"-"<<u_part<<"*d/dx"<<v_part<<endl;
     cout<<"d/dx("<<equation<<")=----------------------------------------------------------"<<endl;
     cout<<"                                          "<<v_part<<"^2"<<endl;
-    cout<<"d/dx"<<u_part<<"="<<endl;
+    cout<<"calculating the dervaive of "<<u_part<<" -"<<endl;
     derivative_of_upart=partition_based_on_operator(remove_bracket(u_part));
     cout<<"d/dx"<<u_part<<"="<<derivative_of_upart<<endl;
-    cout<<"d/dx"<<v_part<<"="<<endl;
+    cout<<"calculating the dervaive of "<<v_part<<endl;
     derivative_of_vpart=partition_based_on_operator(remove_bracket(v_part));
-    cout<<"d/dx"<<v_part<<"="<<derivative_of_vpart<<endl;
+    cout<<"d/dx"<<v_part<<"="<<derivative_of_vpart<<" -"<<endl;
     answer="("+v_part+"*("+derivative_of_upart+")-"+u_part+"*("+derivative_of_vpart+"))"+"/("+v_part+")"+"^2";
-    cout<<"                     "<<v_part<<"*("<<derivative_of_upart<<")-"<<u_part<<"*("<<derivative_of_vpart<<")"<<endl;
-    cout<<"d/dx("<<equation<<")=----------------------------------------------------------------------------------"<<endl;
-    cout<<"                                             "<<v_part<<"^2"<<endl;
-    cout<<"                     "<<v_part<<"*d/dx"<<u_part<<"-"<<u_part<<"*d/dx"<<v_part<<endl;
-    cout<<"d/dx("<<equation<<")=----------------------------------------------------------"<<endl;
+    for(i=0;i<equation.size()+8;i++)
+    {
+        cout<<" ";
+    }
+    cout<<v_part<<"*("<<derivative_of_upart<<")-"<<u_part<<"*("<<derivative_of_vpart<<")"<<endl;
+    cout<<"d/dx("<<equation<<")=--------------------------------------------------------"<<endl;
     cout<<"                                             "<<v_part<<"^2"<<endl;
     return answer;
 }

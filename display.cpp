@@ -1,119 +1,53 @@
 #include<iostream>
 #include "header.h"
 using namespace std;
-
-// string answer="";
-// string removespaces(string equation)
-// {
-//     string space_removal_string;
-//     int i;
-//     for(i=0;equation[i]!='\0';i++)
-//     {
-//         if(equation[i]==' ')
-//             {
-//                 continue;
-//             }
-//         else
-//             {
-//                 space_removal_string+=equation[i];
-//             }
-//     }
-//     return space_removal_string;
-// }
-// void as_algebric(string equation)
-// {
-//     int single_or_multiple=check_u_or_uplusv(equation);
-//     if(single_or_multiple==0)
-//     {
-//         cout<<"The formula for solving this equation: "<<endl;
-//         cout<<"                                      d/dx(x^n)= nx^(n-1)"<<endl;
-//     }
-//     else 
-//     {
-//         cout<<"The formula for solving this equation: "<<endl;
-//         cout<<"                                      d/dx(u+v)= d/dx(u)+d/dx(v)"<<endl;
-//         cout<<"The power formula is also needed: "<<endl;
-//         cout<<"                                  d/dx(x^n)= nx^(n-1)"<<endl;                                      
-//     }
-//     cout<<"Given Equation: "<<endl;
-//     cout<<"f(x)= "<<equation<<endl;
-//     cout<<"d/dx(f(x))=d/dx("<<equation<<")"<<endl;
-//     if(single_or_multiple>0)
-//     {
-//         show_as_uplusv(equation);
-//     }
-//     cout<<"         =";
-//     //answer
-
-// }
-// //-5*x+6*x//-5*x
-// int check_u_or_uplusv(string equation)
-// {
-//     int plus_or_minus_count=0;
-//     for(int i=0;i<equation.size();i++)
-//     {
-
-//         if((equation[i]=='+' || equation[i]=='-') && (equation[i-1]!='('))
-//             {
-//                 plus_or_minus_count++;
-//             }
-//         else 
-//             {
-//                 continue;
-//             }
-//     }
-//     return plus_or_minus_count;
-// }
-// //5*x^2+6*x^-2=d/dx(5*x^2)+d/dx(6*x^-2)
-// void show_as_uplusv(string equation)
-// {
-//     string temporary_u_or_v="";
-//     char get_symbol='\0';
-//     int i;
-//     for(i=0;i<equation.size();i++)
-//     {
-//         if((equation[i]=='+' || equation[i]=='-') && (equation[i-1]!='(') && (equation[i-1]!='^'))
-//         {
-//             cout<<"d/dx("<<temporary_u_or_v<<")"<<equation[i];
-//             temporary_u_or_v="";
-//         }
-//         else if(equation[i]=='(' || equation[i]==')')
-//         {
-//             continue;
-//         }
-//         else 
-//         {
-//             temporary_u_or_v+=equation[i];
-//         }
-//     }
-//     cout<<"d/dx("<<temporary_u_or_v<<')'<<endl;
-        
-// }
-// void display()
-// {
-//         cout<<"Enter the equation that you want to differentiate"<<endl;
-//         cout<<"Option:"<<endl;
-//         cout<<"1.Input Equation"<<endl;
-//         cout<<"2.Exit"<<endl;
-//         cout<<"Enter your choice: ";
-//         int choice;
-//         cin>>choice;
-//         getchar();
-//         if(choice==1)
-//         {
-//             string equation;
-//             cout<<"Enter The Equation: ";
-//             getline(cin,equation);
-//             equation=removespaces(equation);
-//             cout<<equation<<endl;
-//            cout<<"Answer: ";
-//            bool uv_recognizer=check_uv_function(equation);
-//            if(uv_recognizer==true)
-//            {
-//                 answer+=as_uv_function(equation);
-//            }
-//         }
-// }
+string removespaces(string equation)
+{
+    string space_removal_string;
+    int i;
+    for(i=0;equation[i]!='\0';i++)
+    {
+        if(equation[i]==' ')
+            {
+                continue;
+            }
+        else
+            {
+                space_removal_string+=equation[i];
+            }
+    }
+    return space_removal_string;
+}
+void display()
+{
+    cout<<"-------------------Welcome to Derivative Calculator------------------"<<endl<<endl<<endl<<endl;
+    int choice;
+    string equation,answer;
+    while(1)
+    {
+        cout<<"1. Show Formula"<<endl;
+        cout<<"2. Input Equation"<<endl;
+        cout<<"3. Exit"<<endl<<endl;
+        cout<<"Enter your choice: ";
+        cin>>choice;
+        getchar();
+        if(choice==1)
+        {
+            show_formula();
+        }
+        else if(choice==2)
+        {
+            cout<<"Enter the equation: ";
+            cin>>equation;
+            answer=partition_based_on_operator(equation);
+        }
+        else if(choice==3)
+        {
+            break;
+        }
+    }
+    cout<<"-----------------Thank You---------------------------------"<<endl;
+}
 string initial_checking(string equation)
 {
     string answer_for="";
@@ -223,5 +157,36 @@ int check_algebric_equation(string equation)
     {
         return 1;
     }
+}
+void show_formula()
+{
+    cout<<"   Some basic formula of differentiation are given below"<<endl;
+    cout<<"1. Constant Formula:"<<endl;
+    cout<<"        d/dx(c)=0"<<endl;
+    cout<<"2. Power Formula:"<<endl;
+    cout<<"        d/dx(x^n)=nx^(n-1)"<<endl;
+    cout<<"3. Multiple Rule:"<<endl;
+    cout<<"        d/dx(cf(x))=c*d/dx(f(x))"<<endl;
+    cout<<"4. Sum Rule:"<<endl;
+    cout<<"        d/dx(f(x)+g(x))=d/dx(f(x))+d/dx(g(x))"<<endl;
+    cout<<"5. Difference Rule:"<<endl;
+    cout<<"        d/dx(f(x)-g(x))=d/dx(f(x))-d/dx(g(x))"<<endl;
+    cout<<"6. Product Rule:"<<endl;
+    cout<<"        d/dx(f(x)*g(x))=f(x)*d/dx(g(x))+g(x)*d/dx(f(x))"<<endl;
+    cout<<"7. Division Rule:"<<endl;
+    cout<<"        d/dx(f(x)/g(x))=(g(x)*d/dx(f(x))+f(x)*d/dx(g(x)))/(g(x))^2"<<endl;
+    cout<<"8. Expotential Rule:"<<endl;
+    cout<<"        d/dx(e^x)=e^x"<<endl;
+    cout<<"9. Logarithmic Rule:"<<endl;
+    cout<<"        d/dx(ln(x))=1/x"<<endl;
+    cout<<"10.Square Root Rule:"<<endl;
+    cout<<"        d/dx(sqrt(x))=1/(2*sqrt(x))"<<endl;
+    cout<<"11.Trigonometry Rule:"<<endl;
+    cout<<"       (i)   d/dx(sin(x))  =    cos(x)"<<endl;
+    cout<<"       (ii)  d/dx(cos(x))  =    - sin(x)"<<endl;
+    cout<<"       (iii) d/dx(sec(x))  =    sec(x)*tan(x)"<<endl;
+    cout<<"       (iv)  d/dx(cosec(x))=    - cosec(x)*cot(x)"<<endl;
+    cout<<"       (v)   d/dx(tan(x))  =    sec^2(x)"<<endl;
+    cout<<"       (vi)  d/dx(cot(x))  =    - cosec^2(x)"<<endl;
 }
 

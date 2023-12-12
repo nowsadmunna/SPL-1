@@ -50,7 +50,7 @@ string as_uv_function(string equation)
     derivative_of_vpart=partition_based_on_operator(remove_bracket(v_part));
     cout<<"d/dx"<<v_part<<"="<<derivative_of_vpart<<endl;
     answer=v_part+"*("+derivative_of_upart+")+"+u_part+"*("+derivative_of_vpart+")";
-    cout<<answer<<endl;
+    cout<<"d/dx("<<equation<<")="<<answer<<endl;
     return answer;
 }
 string remove_bracket(string equation)

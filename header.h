@@ -36,5 +36,5 @@ string as_square_root_function(string equation);
 int check_expotentail_function(string equation);
 string as_expotential_function(string equation);
 int check_algebric_equation(string equation);
-string get_algebric_part();
+void show_formula();
 #endif

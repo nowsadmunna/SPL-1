@@ -41,9 +41,6 @@ string as_expotential_function(string equation)
 {
     string inside_of_ex,answer,algebric_part;
     inside_of_ex=inside_of_bracket(equation);
-    // cout<<"As it is a expotential function.it will follow the expotential rule: "<<endl;
-    // cout<<"d/dx(e^(x))=e^(x)"<<endl;
-    // cout<<"d/dx("<<equation<<")= "<<"e^("<<inside_of_ex<<")* d/dx("<<inside_of_ex<<")"<<endl;
     if(inside_of_ex.size()==1 && inside_of_ex[0]=='x')
     {
         cout<<"e^(x)"<<endl;
