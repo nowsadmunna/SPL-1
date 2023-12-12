@@ -33,7 +33,7 @@ int check_square_root_function(string equation)
     return 0;
    }
 }
-string as_square_root_function(string equation,string temporary)
+string as_square_root_function(string equation)
 {
     string inside_of_square_root,answer;
     inside_of_square_root=inside_of_bracket(equation);
@@ -50,21 +50,21 @@ string as_square_root_function(string equation,string temporary)
     {
         temporary+="(1/2*sqrt("+inside_of_square_root+"))*";
         cout<<temporary<<"d/dx("<<inside_of_square_root<<")"<<endl;
-        cout<<temporary<<"("<<partitioning_equation(inside_of_square_root,temporary)<<")"<<endl;
-        if(partitioning_equation(inside_of_square_root,temporary)=="0")
+        cout<<temporary<<"("<<partitioning_equation(inside_of_square_root)<<")"<<endl;
+        if(partitioning_equation(inside_of_square_root)=="0")
         {
             answer="0";
         }
         else 
         {
-            answer="(1/2*sqrt("+inside_of_square_root+"))*("+partitioning_equation(inside_of_square_root,temporary)+")";
+            answer="(1/2*sqrt("+inside_of_square_root+"))*("+partitioning_equation(inside_of_square_root)+")";
         }
     }
     else 
     {
         temporary+="(1/2*sqrt("+inside_of_square_root+"))*";
         cout<<temporary<<"d/dx("<<inside_of_square_root<<")"<<endl;
-        answer="(1/2*sqrt("+inside_of_square_root+"))*("+partition_based_on_operator(inside_of_square_root,temporary)+")";
+        answer="(1/2*sqrt("+inside_of_square_root+"))*("+partition_based_on_operator(inside_of_square_root)+")";
     }
     return answer;   
 }

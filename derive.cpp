@@ -11,12 +11,10 @@ string calculate_derivative(char variable,int power,int coefficient,char sign)
     if(another_sign=='+' || another_sign=='-')
     {
         answer+=another_sign;
-        //cout<<another_sign;
     }
     if(variable=='\0')
     {
         answer+="0";
-        //cout<<"0";
         another_sign=sign;
         return answer;
     }
@@ -28,16 +26,13 @@ string calculate_derivative(char variable,int power,int coefficient,char sign)
             answer+=to_string(derivative_coefficient);
             answer+=')';
             cout<<"(";
-            //temporary+="(";
             if(coefficient<0)
              {
                 cout<<"("<<coefficient<<")";
-                //temporary+="("+to_string(coefficient)+")";
              }
             else 
             {
                 cout<<coefficient;
-                //temporary+=to_string(coefficient);
             }
             cout<<"*";
             if(power<0)
@@ -78,7 +73,6 @@ string calculate_derivative(char variable,int power,int coefficient,char sign)
                 cout<<power;
             }
             cout<<")";
-            //temporary+=")";
         }
     }
     if(derivative_coefficient==1 && derivative_power==0)
@@ -90,15 +84,12 @@ string calculate_derivative(char variable,int power,int coefficient,char sign)
     {
         answer+="*";
         answer+=variable;
-        //if(derivative_power!=1)
-        //temporary+="*"+variable;
         cout<<"*"<<variable;
     }
     if(derivative_power!=0 && derivative_power!=1)
     {
         answer+="^";
         cout<<"^"<<"("<<power<<"-1)";
-        //temporary+="^("+to_string(power)+"-1)";
         if(derivative_power<0)
         {
             answer+="(";
@@ -113,11 +104,7 @@ string calculate_derivative(char variable,int power,int coefficient,char sign)
     else
     {
         cout<<"*"<<variable<<"^"<<"("<<power<<"-1"<<")";
-        // temporary+="*";
-        // temporary+=variable;
-        // temporary+="^("+to_string(power)+"-1)";
     }
-    //cout<<temporary<<endl;
   another_sign=sign;
   return answer;      
 }

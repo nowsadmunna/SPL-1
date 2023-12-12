@@ -37,7 +37,7 @@ int check_expotentail_function(string equation)
     return 0;
    }
 }
-string as_expotential_function(string equation,string temporary)
+string as_expotential_function(string equation)
 {
     string inside_of_ex,answer;
     inside_of_ex=inside_of_bracket(equation);
@@ -54,8 +54,8 @@ string as_expotential_function(string equation,string temporary)
     {
         temporary+="e^("+inside_of_ex+")*";
         cout<<temporary<<"d/dx("<<inside_of_ex<<")"<<endl;
-        cout<<temporary<<"("<<partitioning_equation(inside_of_ex,temporary)<<")"<<endl;
-        if(partitioning_equation(inside_of_ex,temporary)=="0")
+        cout<<temporary<<"("<<partitioning_equation(inside_of_ex)<<")"<<endl;
+        if(partitioning_equation(inside_of_ex)=="0")
         {
             answer="0";
         }
@@ -68,7 +68,7 @@ string as_expotential_function(string equation,string temporary)
     {
         temporary+="e^("+inside_of_ex+")*";
         cout<<temporary<<"d/dx("<<inside_of_ex<<")"<<endl;
-        answer="e^("+inside_of_ex+")*("+partition_based_on_operator(inside_of_ex,temporary)+")";
+        answer="e^("+inside_of_ex+")*("+partition_based_on_operator(inside_of_ex)+")";
     }   
     return answer;
 }

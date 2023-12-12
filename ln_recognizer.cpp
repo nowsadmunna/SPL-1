@@ -37,7 +37,7 @@ int check_ln_function(string equation)
     return 0;
    }
 }
-string as_ln_function(string equation,string temporary)
+string as_ln_function(string equation)
 {
     string inside_of_ln,answer;
     inside_of_ln=inside_of_bracket(equation);
@@ -54,21 +54,21 @@ string as_ln_function(string equation,string temporary)
     {
         temporary+="(1/("+inside_of_ln+"))*";
         cout<<"(1/("<<inside_of_ln<<"))*"<<"d/dx("<<inside_of_ln<<")"<<endl;
-        cout<<temporary<<"("<<partitioning_equation(inside_of_ln,temporary)<<")"<<endl;
-        if(partitioning_equation(inside_of_ln,temporary)=="0")
+        cout<<temporary<<"("<<partitioning_equation(inside_of_ln)<<")"<<endl;
+        if(partitioning_equation(inside_of_ln)=="0")
         {
             answer="0";
         }
         else 
         {
-            answer="(1/("+inside_of_ln+"))*("+partitioning_equation(inside_of_ln,temporary)+")";
+            answer="(1/("+inside_of_ln+"))*("+partitioning_equation(inside_of_ln)+")";
         }
     }
     else 
     {
         temporary+="(1/("+inside_of_ln+"))*";
         cout<<"(1/("<<inside_of_ln<<"))*"<<"d/dx("<<inside_of_ln<<")"<<endl;
-        answer="(1/("+inside_of_ln+"))*("+partition_based_on_operator(inside_of_ln,temporary)+")";
+        answer="(1/("+inside_of_ln+"))*("+partition_based_on_operator(inside_of_ln)+")";
     }   
     return answer;
 }
