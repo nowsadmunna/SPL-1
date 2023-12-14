@@ -47,7 +47,8 @@ string as_square_root_function(string equation)
         cout<<"(1/2*sqrt("+inside_of_square_root+"))*";
         cout<<"d/dx("<<inside_of_square_root<<")"<<endl;
         cout<<"d/dx("<<inside_of_square_root<<") =";
-        algebric_part=partitioning_equation(inside_of_square_root);       
+        algebric_part=partitioning_equation(inside_of_square_root);    
+        cout<<endl;   
         answer="(1/2*sqrt("+inside_of_square_root+"))*("+algebric_part+")";
     }
     else 

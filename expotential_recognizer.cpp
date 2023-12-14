@@ -52,6 +52,7 @@ string as_expotential_function(string equation)
         cout<<"d/dx("<<inside_of_ex<<")"<<endl;
         cout<<"d/dx("<<inside_of_ex<<")=";
         algebric_part=partitioning_equation(inside_of_ex);
+        cout<<endl;
         answer="e^("+inside_of_ex+")*("+algebric_part+")";
     }
     else 

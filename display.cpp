@@ -20,16 +20,16 @@ string removespaces(string equation)
 }
 void display()
 {
-    cout<<"-------------------Welcome to Derivative Calculator------------------"<<endl<<endl<<endl<<endl;
+    cout<<"                                Welcome to Derivative Calculator"<<endl<<endl<<endl<<endl;
     int choice,i,j;
     stack<char>answer_minimization;
     string equation,answer,final_answer,part;
     while(1)
     {
-        cout<<"1. Show Formula"<<endl;
-        cout<<"2. Input Equation"<<endl;
-        cout<<"3. Exit"<<endl<<endl;
-        cout<<"Enter your choice: ";
+        cout<<"                            1. Show Formula"<<endl;
+        cout<<"                            2. Input Equation"<<endl;
+        cout<<"                            3. Exit"<<endl<<endl;
+        cout<<"                            Enter your choice: ";
         cin>>choice;
         getchar();
         answer="";
@@ -42,10 +42,9 @@ void display()
         else if(choice==2)
         {
             cout<<"Enter the equation: ";
-            cin>>equation;
-            getchar();
-            cout<<"step by step derivative calculation of d/dx("<<equation<<") are given below : "<<endl;
-            answer=partition_based_on_operator(equation);
+            getline(cin,equation);
+            cout<<"step by step derivative calculation of d/dx("<<equation<<") are given below : "<<endl<<endl<<endl;
+            answer=partition_based_on_operator(removespaces(equation));
             cout<<endl<<endl;
             cout<<"Answer ="<<answer<<endl;
             for(i=0;i<answer.size();i++)
@@ -157,10 +156,10 @@ void display()
         }
         else 
         {
-            cout<<"Enter a valid choice"<<endl;
+            cout<<"                                Enter a valid choice"<<endl;
         }
     }
-    cout<<"--------------------------Thank You---------------------------------"<<endl;
+    cout<<"                                        Thank You"<<endl;
 }
 string initial_checking(string equation)
 {
@@ -222,6 +221,7 @@ string partition_based_on_operator(string equation)
             {
                 cout<<"d/dx("<<part<<")=";
                 part_answer=initial_checking(part);
+                cout<<endl;
                 answer+=part_answer;
                 answer+=equation[i];
                 part="";
@@ -238,6 +238,7 @@ string partition_based_on_operator(string equation)
     }
     cout<<"d/dx("<<part<<")=";
     part_answer=initial_checking(part);
+    cout<<endl;
     answer+=part_answer;
     part="";
     return answer;

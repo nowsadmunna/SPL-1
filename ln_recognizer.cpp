@@ -52,6 +52,7 @@ string as_ln_function(string equation)
         cout<<"d/dx("<<inside_of_ln<<")"<<endl;
         cout<<"d/dx("<<inside_of_ln<<")=";
         algebric_part=partitioning_equation(inside_of_ln);
+        cout<<endl;
         answer="(1/("+inside_of_ln+"))*("+algebric_part+")";
     }
     else 
