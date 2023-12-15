@@ -34,6 +34,9 @@ int check_square_root_function(string equation);
 string as_square_root_function(string equation);
 int check_expotentail_function(string equation);
 string as_expotential_function(string equation);
-int check_algebric_equation(string equation);
 void show_formula();
+int check_inverse_trigonometry_funtion(string equation);
+int derivative_sign_of_inverse_trigonometry();
+string as_inverse_trigonometry_function(string equation);
+string inside_of_inverse_bracket(string equation);
 #endif

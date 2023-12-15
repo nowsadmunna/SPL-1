@@ -193,10 +193,6 @@ string partitioning_equation(string equation)
         }
     }
     answer+=calculate_derivative(variable,power,coefficient);
-    if(answer!="0")
-    {
-        cout<<"="<<answer<<endl;
-    }
     sign='\0';
     variable='\0';
     co_coefficient="";

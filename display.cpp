@@ -23,7 +23,7 @@ void display()
     cout<<"                                Welcome to Derivative Calculator"<<endl<<endl<<endl<<endl;
     int choice,i,j;
     stack<char>answer_minimization;
-    string equation,answer,final_answer,part;
+    string equation,answer,final_answer;
     while(1)
     {
         cout<<"                            1. Show Formula"<<endl;
@@ -34,121 +34,265 @@ void display()
         getchar();
         answer="";
         final_answer="";
-        part="";
+        //part="";
         if(choice==1)
         {
             show_formula();
         }
         else if(choice==2)
         {
+            stack<char>bracket;
+            string part;
             cout<<"Enter the equation: ";
             getline(cin,equation);
             cout<<"step by step derivative calculation of d/dx("<<equation<<") are given below : "<<endl<<endl<<endl;
-            answer=partition_based_on_operator(removespaces(equation));
-            cout<<endl<<endl;
-            cout<<"Answer ="<<answer<<endl;
-            for(i=0;i<answer.size();i++)
+            string initial_equation;
+            for(i=0;i<equation.size();i++)
             {
-                if(answer[i]=='(')
+                if(equation[i]=='(')
                 {
-                    answer_minimization.push(answer[i]);
-                    part+=answer[i];
+                    bracket.push(equation[i]);
+                    part+=equation[i];
                 }
-                else if(answer[i]==')')
+                else if(equation[i]==')')
                 {
-                    answer_minimization.pop();
-                    part+=answer[i];
+                    bracket.pop();
+                    part+=equation[i];
                 }
-                else if(answer[i]=='+' || answer[i]=='-')
+                else if(equation[i]=='+' || equation[i]=='-')
                 {
-                    if(answer_minimization.size()==0)
+                    if(bracket.size()==0)
                     {
-                        int flag=0;
-                        for(j=0;j<part.size();j++)
-                        {
-                            if(part[j]=='*' && part[j+1]=='0')
-                            {
-                                final_answer+="0";
-                                flag=1;
-                                break;
-                            }
-                            else if(part[j]=='*' && part[j+1]=='(' && part[j+2]=='0' && part[j+3]==')')
-                            {
-                                final_answer+="0";
-                                flag=1;
-                                break;
-                            }   
-                        }
-                        if(flag==0)
-                        {
-                            final_answer+=part;
-                        }
-                        final_answer+=answer[i];
+                        //part_by_part.push(part); 
+                        initial_equation+="d/dx(";
+                        initial_equation+=part;
+                        initial_equation+=")";
+                        initial_equation+=equation[i];
                         part="";
                     }
                     else 
                     {
-                        part+=answer[i];
+                        part+=equation[i];
                     }
                 }
                 else 
                 {
-                    part+=answer[i];
+                    part+=equation[i];
+                    
                 }
             }
-            int flagg=0;
-            for(i=0;i<part.size();i++)
-            {
-                if(part[i]=='*' && part[i+1]=='0')
-                {
-                    final_answer+="0";
-                    flagg=1;
-                    break;
-                }
-                else if(part[i]=='*' && part[i+1]=='(' && part[i+2]=='0' && part[i+3]==')')
-                {
-                    final_answer+="0";
-                    flagg=1;
-                    break;
-                }   
-            }
-            if(flagg==0)
-            {
-                final_answer+=part;
-            }
+            //part_by_part.push(part);
+            initial_equation+="d/dx(";
+            initial_equation+=part;
+            initial_equation+=")";
             part="";
-            answer="";
-            cout<<"       ="<<final_answer<<endl;
-            for(i=0;i<final_answer.size();i++)
+            cout<<initial_equation<<endl;
+            string new_solution;
+            while(1)
             {
-                if((final_answer[i]=='+' || final_answer[i]=='-') && final_answer[i+1]=='0')
+                new_solution="";
+                int flag=0;
+                stack<char>brc;
+                for(i=0;i<initial_equation.size();i++)
                 {
-                    i++;
+                    if(initial_equation[i]=='d' && initial_equation[i+1]=='/' && initial_equation[i+2]=='d' && initial_equation[i+3]=='x')
+                    {
+                        flag=1;
+                    }
+                    else if(flag==0)
+                    {
+                        new_solution+=initial_equation[i];
+                    }
+                    else if(flag==1)
+                    {
+                        i=i+3;
+                        string der_part;
+                        new_solution+='(';
+                        for(j=i; ; j++)
+                        {
+                            if(initial_equation[j]=='(')
+                            {
+                                if(brc.size()==0)
+                                {
+                                    brc.push('(');
+                                }
+                                else 
+                                {
+                                    der_part+='(';
+                                    brc.push('(');
+                                }
+                            }
+                            else if(initial_equation[j]==')')
+                            {
+                                brc.pop();
+                                if(brc.size()==0)
+                                {
+                                    break;
+                                }
+                                else 
+                                {
+                                    der_part+=initial_equation[j];
+                                }
+                            }
+                            else 
+                            {
+                                der_part+=initial_equation[j];
+                            }
+                        }
+                        i=j;
+                        stack<char>an_br_stack;
+                        string inside_dx;
+                        for(j=0;j<der_part.size();j++)
+                        {
+                            if(der_part[j]=='(')
+                            {
+                                an_br_stack.push('(');
+                                inside_dx+='(';
+                            }
+                            else if(der_part[j]==')')
+                            {
+                                an_br_stack.pop();
+                                inside_dx+=')';
+                            }
+                            else if(der_part[j]=='+' || der_part[j]=='-')
+                            {
+                                if(an_br_stack.size()==0)
+                                {
+                                    new_solution+=initial_checking(inside_dx);
+                                    new_solution+=der_part[j];
+                                    inside_dx="";
+                                }
+                                else 
+                                {
+                                    inside_dx+=der_part[j];
+                                }
+                            }
+                            else 
+                            {
+                                inside_dx+=der_part[j];
+
+                            }
+                        }
+                        new_solution+=initial_checking(inside_dx);
+                        inside_dx="";
+                        der_part="";
+                        flag=0;
+                        new_solution+=')';
+                    }
+                }
+                if(new_solution==initial_equation)
+                {
+                    break;
                 }
                 else 
                 {
-                    answer+=final_answer[i];
+                    cout<<new_solution<<endl<<endl;
+                    initial_equation=new_solution;
                 }
-            }
-            cout<<"       ="<<answer<<endl;
-            final_answer="";
-            for(i=0;i<answer.size();i++)
-            {
-                if(answer[i]=='0' && answer[i+1]=='+')
-                {
-                    i++;
-                    continue;
-                }
-                else if(answer[i]=='0' && answer[i]=='-')
-                {
-                    continue;
-                }
-                else 
-                {
-                    final_answer+=answer[i];
-                }
-            }
-            cout<<"       ="<<final_answer<<endl;
+        }
+            // cout<<"Answer ="<<answer<<endl;
+            // for(i=0;i<answer.size();i++)
+            // {
+            //     if(answer[i]=='(')
+            //     {
+            //         answer_minimization.push(answer[i]);
+            //         part+=answer[i];
+            //     }
+            //     else if(answer[i]==')')
+            //     {
+            //         answer_minimization.pop();
+            //         part+=answer[i];
+            //     }
+            //     else if(answer[i]=='+' || answer[i]=='-')
+            //     {
+            //         if(answer_minimization.size()==0)
+            //         {
+            //             int flag=0;
+            //             for(j=0;j<part.size();j++)
+            //             {
+            //                 if(part[j]=='*' && part[j+1]=='0')
+            //                 {
+            //                     final_answer+="0";
+            //                     flag=1;
+            //                     break;
+            //                 }
+            //                 else if(part[j]=='*' && part[j+1]=='(' && part[j+2]=='0' && part[j+3]==')')
+            //                 {
+            //                     final_answer+="0";
+            //                     flag=1;
+            //                     break;
+            //                 }   
+            //             }
+            //             if(flag==0)
+            //             {
+            //                 final_answer+=part;
+            //             }
+            //             final_answer+=answer[i];
+            //             part="";
+            //         }
+            //         else 
+            //         {
+            //             part+=answer[i];
+            //         }
+            //     }
+            //     else 
+            //     {
+            //         part+=answer[i];
+            //     }
+            // }
+            // int flagg=0;
+            // for(i=0;i<part.size();i++)
+            // {
+            //     if(part[i]=='*' && part[i+1]=='0')
+            //     {
+            //         final_answer+="0";
+            //         flagg=1;
+            //         break;
+            //     }
+            //     else if(part[i]=='*' && part[i+1]=='(' && part[i+2]=='0' && part[i+3]==')')
+            //     {
+            //         final_answer+="0";
+            //         flagg=1;
+            //         break;
+            //     }   
+            // }
+            // if(flagg==0)
+            // {
+            //     final_answer+=part;
+            // }
+            // part="";
+            // answer="";
+            // cout<<"       ="<<final_answer<<endl;
+            // for(i=0;i<final_answer.size();i++)
+            // {
+            //     if((final_answer[i]=='+' || final_answer[i]=='-') && final_answer[i+1]=='0')
+            //     {
+            //         i++;
+            //     }
+            //     else 
+            //     {
+            //         answer+=final_answer[i];
+            //     }
+            // }
+            // cout<<"       ="<<answer<<endl;
+            // final_answer="";
+            // for(i=0;i<answer.size();i++)
+            // {
+            //     if(answer[i]=='0' && answer[i+1]=='+')
+            //     {
+            //         i++;
+            //         continue;
+            //     }
+            //     else if(answer[i]=='0' && answer[i]=='-')
+            //     {
+            //         continue;
+            //     }
+            //     else 
+            //     {
+            //         final_answer+=answer[i];
+            //     }
+            // }
+           // cout<<"       ="<<final_answer<<endl;
         }
         else if(choice==3)
         {
@@ -175,7 +319,11 @@ string initial_checking(string equation)
     }
     else 
     {
-        if(check_trigonometry_funtion(equation))
+        if(check_inverse_trigonometry_funtion(equation))
+        {
+            answer_for+=as_inverse_trigonometry_function(equation);
+        }
+        else if(check_trigonometry_funtion(equation))
         {
             answer_for+=as_trigonometry_function(equation);
         }
@@ -193,87 +341,12 @@ string initial_checking(string equation)
         }
         else 
         {
-            answer_for+=partitioning_equation(remove_bracket(equation));
+            answer_for+=partitioning_equation(equation);
         }
     }
     return answer_for;
 }
-string partition_based_on_operator(string equation)
-{
-    string part,answer,part_answer;
-    stack<char>bracket;
-    int i,j;
-    for(i=0;i<equation.size();i++)
-    {
-        if(equation[i]=='(')
-        {
-            bracket.push(equation[i]);
-            part+=equation[i];
-        }
-        else if(equation[i]==')')
-        {
-            bracket.pop();
-            part+=equation[i];
-        }
-        else if(equation[i]=='+' || equation[i]=='-')
-        {
-            if(bracket.size()==0)
-            {
-                cout<<"d/dx("<<part<<")=";
-                part_answer=initial_checking(part);
-                cout<<endl;
-                answer+=part_answer;
-                answer+=equation[i];
-                part="";
-            }
-            else 
-            {
-                part+=equation[i];
-            }
-        }
-        else 
-        {
-            part+=equation[i];
-        }
-    }
-    cout<<"d/dx("<<part<<")=";
-    part_answer=initial_checking(part);
-    cout<<endl;
-    answer+=part_answer;
-    part="";
-    return answer;
-}
-int check_algebric_equation(string equation)
-{
-    if(check_uv_function(equation))
-    {
-        return 0;
-    }
-    else if(check_udivv_function(equation))
-    {
-        return 0;
-    }
-    else if(check_trigonometry_funtion(equation))
-    {
-        return 0;
-    }
-    else if(check_ln_function(equation))
-    {
-        return 0;
-    }
-    else if(check_expotentail_function(equation))
-    {
-        return 0;
-    }
-    else if(check_square_root_function(equation))
-    {
-        return 0;
-    }
-    else 
-    {
-        return 1;
-    }
-}
+
 void show_formula()
 {
     cout<<"   Some basic formula of differentiation are given below : "<<endl;
