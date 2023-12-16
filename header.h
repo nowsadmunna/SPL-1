@@ -39,4 +39,5 @@ int check_inverse_trigonometry_funtion(string equation);
 int derivative_sign_of_inverse_trigonometry();
 string as_inverse_trigonometry_function(string equation);
 string inside_of_inverse_bracket(string equation);
+string minimized_answer(string equation);
 #endif

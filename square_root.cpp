@@ -33,7 +33,7 @@ int check_square_root_function(string equation)
         expotential_count=i;
        }
    }
-   if(root_count<expotential_count && root_count<trigonometry_count && root_count<ln_count && ln_count<inverse_trigonometry_count)
+   if(root_count<expotential_count && root_count<trigonometry_count && root_count<ln_count && root_count<inverse_trigonometry_count)
    {
     return 1;
    }

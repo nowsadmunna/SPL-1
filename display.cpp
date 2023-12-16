@@ -227,7 +227,7 @@ void display()
                         }
                         if(flag==0)
                         {
-                            final_answer+=part;
+                            final_answer+=minimized_answer(part);
                         }
                         final_answer+=answer[i];
                         part="";
@@ -257,11 +257,11 @@ void display()
                     final_answer+="0";
                     flagg=1;
                     break;
-                } 
+                }
             }
             if(flagg==0)
             {
-                final_answer+=part;
+                final_answer+=minimized_answer(part);
             }
             part="";
             answer="";
@@ -352,41 +352,70 @@ string initial_checking(string equation)
 
 void show_formula()
 {
-    cout<<"   Some basic formula of differentiation are given below : "<<endl;
+    cout<<"   Some basic formula of differentiation are given below : "<<endl<<endl;
     cout<<"1. Constant Formula:"<<endl;
-    cout<<"        d/dx(c)=0"<<endl;
+    cout<<"                d/dx(c)=0"<<endl<<endl;
     cout<<"2. Power Formula:"<<endl;
-    cout<<"        d/dx(x^n)=nx^(n-1)"<<endl;
+    cout<<"              d/dx(x^n)=nx^(n-1)"<<endl<<endl;
     cout<<"3. Multiple Rule:"<<endl;
-    cout<<"        d/dx(cf(x))=c*d/dx(f(x))"<<endl;
+    cout<<"            d/dx(cf(x))=c*d/dx(f(x))"<<endl<<endl;
     cout<<"4. Sum Rule:"<<endl;
-    cout<<"        d/dx(f(x)+g(x))=d/dx(f(x))+d/dx(g(x))"<<endl;
+    cout<<"        d/dx(f(x)+g(x))=d/dx(f(x))+d/dx(g(x))"<<endl<<endl;
     cout<<"5. Difference Rule:"<<endl;
-    cout<<"        d/dx(f(x)-g(x))=d/dx(f(x))-d/dx(g(x))"<<endl;
+    cout<<"        d/dx(f(x)-g(x))=d/dx(f(x))-d/dx(g(x))"<<endl<<endl;
     cout<<"6. Product Rule:"<<endl;
-    cout<<"        d/dx(f(x)*g(x))=f(x)*d/dx(g(x))+g(x)*d/dx(f(x))"<<endl;
+    cout<<"        d/dx(f(x)*g(x))=f(x)*d/dx(g(x))+g(x)*d/dx(f(x))"<<endl<<endl;
     cout<<"7. Division Rule:"<<endl;
-    cout<<"        d/dx(f(x)/g(x))=(g(x)*d/dx(f(x))+f(x)*d/dx(g(x)))/(g(x))^2"<<endl;
+    cout<<"        d/dx(f(x)/g(x))=(g(x)*d/dx(f(x))+f(x)*d/dx(g(x)))/(g(x))^2"<<endl<<endl;
     cout<<"8. Expotential Rule:"<<endl;
-    cout<<"        d/dx(e^x)=e^x"<<endl;
+    cout<<"              d/dx(e^x)=e^x"<<endl<<endl;
     cout<<"9. Logarithmic Rule:"<<endl;
-    cout<<"        d/dx(ln(x))=1/x"<<endl;
+    cout<<"            d/dx(ln(x))=1/x"<<endl<<endl;
     cout<<"10.Square Root Rule:"<<endl;
-    cout<<"        d/dx(sqrt(x))=1/(2*sqrt(x))"<<endl;
+    cout<<"          d/dx(sqrt(x))=1/(2*sqrt(x))"<<endl<<endl;
     cout<<"11.Trigonometry Rule:"<<endl;
-    cout<<"       (i)   d/dx(sin(x))  =   cos(x)"<<endl;
-    cout<<"       (ii)  d/dx(cos(x))  =   - sin(x)"<<endl;
-    cout<<"       (iii) d/dx(sec(x))  =   sec(x)*tan(x)"<<endl;
-    cout<<"       (iv)  d/dx(csc(x))  =   - csc(x)*cot(x)"<<endl;
-    cout<<"       (v)   d/dx(tan(x))  =   sec^2(x)"<<endl;
-    cout<<"       (vi)  d/dx(cot(x))  =   - csc^2(x)"<<endl;
+    cout<<"   (i)   d/dx(sin(x))  =   cos(x)"<<endl;
+    cout<<"   (ii)  d/dx(cos(x))  =   - sin(x)"<<endl;
+    cout<<"   (iii) d/dx(sec(x))  =   sec(x)*tan(x)"<<endl;
+    cout<<"   (iv)  d/dx(csc(x))  =   - csc(x)*cot(x)"<<endl;
+    cout<<"   (v)   d/dx(tan(x))  =   sec^2(x)"<<endl;
+    cout<<"   (vi)  d/dx(cot(x))  =   - csc^2(x)"<<endl<<endl;
     cout<<"12.Inverse Trigonometry Rule:"<<endl;
-    cout<<       "(i)   d/dx(sin^(-1)(x))  =  1/sqrt(1-x^2)"<<endl;
-    cout<<       "(i)   d/dx(cos^(-1)(x))  =  (-1)/sqrt(1-x^2)"<<endl;
-    cout<<       "(i)   d/dx(tan^(-1)(x))  =  1/(1+x^2)"<<endl;
-    cout<<       "(i)   d/dx(cot^(-1)(x))  =  (-1)/(1+x^2)"<<endl;
-    cout<<       "(i)   d/dx(sec^(-1)(x))  =  1/x*sqrt(x^2-1)"<<endl;
-    cout<<       "(i)   d/dx(csc^(-1)(x))  =  (-1)/x*sqrt(x^2-1)"<<endl;
+    cout<<"         (i) d/dx(sin^(-1)(x))   =  1/sqrt(1-x^2)"<<endl;
+    cout<<"         (ii) d/dx(cos^(-1)(x))  =  (-1)/sqrt(1-x^2)"<<endl;
+    cout<<"         (iii) d/dx(tan^(-1)(x)) =  1/(1+x^2)"<<endl;
+    cout<<"         (iv) d/dx(cot^(-1)(x))  =  (-1)/(1+x^2)"<<endl;
+    cout<<"         (v) d/dx(sec^(-1)(x))   =  1/x*sqrt(x^2-1)"<<endl;
+    cout<<"         (vi) d/dx(csc^(-1)(x))  =  (-1)/x*sqrt(x^2-1)"<<endl;
+}
+string minimized_answer(string equation)
+{
+    int i;
+    string answer="";
+    for(i=0;i<equation.size();i++)
+    {
+        if(equation[i]=='*' && equation[i+1]=='1')
+        {
+            i++;
+        }
+        else if(equation[i]=='*' && equation[i+1]=='(' && equation[i+2]=='1' && equation[i+3]==')')
+        {
+            i=i+3;
+        }
+        else if(equation[i]=='1' && equation[i+1]=='*')
+        {
+            i++;
+        }
+        else if(equation[i]=='(' && equation[i+1]=='1' && equation[i+2]==')' && equation[i+3]=='*')
+        {
+            i=i+3;
+        }
+        else 
+        {
+            answer+=equation[i];
+        }
+    }
+    return answer;
 }
 
 
