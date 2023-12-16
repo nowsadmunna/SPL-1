@@ -34,10 +34,10 @@ void display()
         getchar();
         answer="";
         final_answer="";
-        //part="";
         if(choice==1)
         {
             show_formula();
+            cout<<endl<<endl<<endl;
         }
         else if(choice==2)
         {
@@ -81,12 +81,12 @@ void display()
                     
                 }
             }
-            //part_by_part.push(part);
             initial_equation+="d/dx(";
             initial_equation+=part;
             initial_equation+=")";
             part="";
-            cout<<initial_equation<<endl;
+            cout<<"          =";
+            cout<<initial_equation<<endl<<endl;
             string new_solution;
             while(1)
             {
@@ -186,113 +186,114 @@ void display()
                 }
                 else 
                 {
+                    cout<<"          =";
                     cout<<new_solution<<endl<<endl;
                     initial_equation=new_solution;
                 }
-        }
-            // cout<<"Answer ="<<answer<<endl;
-            // for(i=0;i<answer.size();i++)
-            // {
-            //     if(answer[i]=='(')
-            //     {
-            //         answer_minimization.push(answer[i]);
-            //         part+=answer[i];
-            //     }
-            //     else if(answer[i]==')')
-            //     {
-            //         answer_minimization.pop();
-            //         part+=answer[i];
-            //     }
-            //     else if(answer[i]=='+' || answer[i]=='-')
-            //     {
-            //         if(answer_minimization.size()==0)
-            //         {
-            //             int flag=0;
-            //             for(j=0;j<part.size();j++)
-            //             {
-            //                 if(part[j]=='*' && part[j+1]=='0')
-            //                 {
-            //                     final_answer+="0";
-            //                     flag=1;
-            //                     break;
-            //                 }
-            //                 else if(part[j]=='*' && part[j+1]=='(' && part[j+2]=='0' && part[j+3]==')')
-            //                 {
-            //                     final_answer+="0";
-            //                     flag=1;
-            //                     break;
-            //                 }   
-            //             }
-            //             if(flag==0)
-            //             {
-            //                 final_answer+=part;
-            //             }
-            //             final_answer+=answer[i];
-            //             part="";
-            //         }
-            //         else 
-            //         {
-            //             part+=answer[i];
-            //         }
-            //     }
-            //     else 
-            //     {
-            //         part+=answer[i];
-            //     }
-            // }
-            // int flagg=0;
-            // for(i=0;i<part.size();i++)
-            // {
-            //     if(part[i]=='*' && part[i+1]=='0')
-            //     {
-            //         final_answer+="0";
-            //         flagg=1;
-            //         break;
-            //     }
-            //     else if(part[i]=='*' && part[i+1]=='(' && part[i+2]=='0' && part[i+3]==')')
-            //     {
-            //         final_answer+="0";
-            //         flagg=1;
-            //         break;
-            //     }   
-            // }
-            // if(flagg==0)
-            // {
-            //     final_answer+=part;
-            // }
-            // part="";
-            // answer="";
-            // cout<<"       ="<<final_answer<<endl;
-            // for(i=0;i<final_answer.size();i++)
-            // {
-            //     if((final_answer[i]=='+' || final_answer[i]=='-') && final_answer[i+1]=='0')
-            //     {
-            //         i++;
-            //     }
-            //     else 
-            //     {
-            //         answer+=final_answer[i];
-            //     }
-            // }
-            // cout<<"       ="<<answer<<endl;
-            // final_answer="";
-            // for(i=0;i<answer.size();i++)
-            // {
-            //     if(answer[i]=='0' && answer[i+1]=='+')
-            //     {
-            //         i++;
-            //         continue;
-            //     }
-            //     else if(answer[i]=='0' && answer[i]=='-')
-            //     {
-            //         continue;
-            //     }
-            //     else 
-            //     {
-            //         final_answer+=answer[i];
-            //     }
-            // }
-           // cout<<"       ="<<final_answer<<endl;
+            }
+            answer=new_solution;
+            for(i=0;i<answer.size();i++)
+            {
+                if(answer[i]=='(')
+                {
+                    answer_minimization.push(answer[i]);
+                    part+=answer[i];
+                }
+                else if(answer[i]==')')
+                {
+                    answer_minimization.pop();
+                    part+=answer[i];
+                }
+                else if(answer[i]=='+' || answer[i]=='-')
+                {
+                    if(answer_minimization.size()==0)
+                    {
+                        int flag=0;
+                        part=inside_of_bracket(part);
+                        for(j=0;j<part.size();j++)
+                        {
+                            if(part[j]=='*' && part[j+1]=='0')
+                            {
+                                final_answer+="0";
+                                flag=1;
+                                break;
+                            }
+                            else if(part[j]=='*' && part[j+1]=='(' && part[j+2]=='0' && part[j+3]==')')
+                            {
+                                final_answer+="0";
+                                flag=1;
+                                break;
+                            }   
+                        }
+                        if(flag==0)
+                        {
+                            final_answer+=part;
+                        }
+                        final_answer+=answer[i];
+                        part="";
+                    }
+                    else 
+                    {
+                        part+=answer[i];
+                    }
+                }
+                else 
+                {
+                    part+=answer[i];
+                }
+            }
+            int flagg=0;
+            part=inside_of_bracket(part);
+            for(i=0;i<part.size();i++)
+            {
+                if(part[i]=='*' && part[i+1]=='0')
+                {
+                    final_answer+="0";
+                    flagg=1;
+                    break;
+                }
+                else if(part[i]=='*' && part[i+1]=='(' && part[i+2]=='0' && part[i+3]==')')
+                {
+                    final_answer+="0";
+                    flagg=1;
+                    break;
+                } 
+            }
+            if(flagg==0)
+            {
+                final_answer+=part;
+            }
+            part="";
+            answer="";
+            for(i=0;i<final_answer.size();i++)
+            {
+                if((final_answer[i]=='+' || final_answer[i]=='-') && final_answer[i+1]=='0')
+                {
+                    i++;
+                }
+                else 
+                {
+                    answer+=final_answer[i];
+                }
+            }
+            final_answer="";
+            for(i=0;i<answer.size();i++)
+            {
+                if(answer[i]=='0' && answer[i+1]=='+')
+                {
+                    i++;
+                    continue;
+                }
+                else if(answer[i]=='0' && answer[i]=='-')
+                {
+                    continue;
+                }
+                else 
+                {
+                    final_answer+=answer[i];
+                }
+            }
+           cout<<"          ="<<final_answer<<"     [Answer]"<<endl<<endl<<endl;
         }
         else if(choice==3)
         {
@@ -300,9 +301,11 @@ void display()
         }
         else 
         {
+            cout<<endl<<endl<<endl;
             cout<<"                                Enter a valid choice"<<endl;
         }
     }
+    cout<<endl<<endl<<endl;
     cout<<"                                        Thank You"<<endl;
 }
 string initial_checking(string equation)
@@ -371,12 +374,19 @@ void show_formula()
     cout<<"10.Square Root Rule:"<<endl;
     cout<<"        d/dx(sqrt(x))=1/(2*sqrt(x))"<<endl;
     cout<<"11.Trigonometry Rule:"<<endl;
-    cout<<"       (i)   d/dx(sin(x))  =    cos(x)"<<endl;
-    cout<<"       (ii)  d/dx(cos(x))  =    - sin(x)"<<endl;
-    cout<<"       (iii) d/dx(sec(x))  =    sec(x)*tan(x)"<<endl;
-    cout<<"       (iv)  d/dx(cosec(x))=    - cosec(x)*cot(x)"<<endl;
-    cout<<"       (v)   d/dx(tan(x))  =    sec^2(x)"<<endl;
-    cout<<"       (vi)  d/dx(cot(x))  =    - cosec^2(x)"<<endl;
+    cout<<"       (i)   d/dx(sin(x))  =   cos(x)"<<endl;
+    cout<<"       (ii)  d/dx(cos(x))  =   - sin(x)"<<endl;
+    cout<<"       (iii) d/dx(sec(x))  =   sec(x)*tan(x)"<<endl;
+    cout<<"       (iv)  d/dx(csc(x))  =   - csc(x)*cot(x)"<<endl;
+    cout<<"       (v)   d/dx(tan(x))  =   sec^2(x)"<<endl;
+    cout<<"       (vi)  d/dx(cot(x))  =   - csc^2(x)"<<endl;
+    cout<<"12.Inverse Trigonometry Rule:"<<endl;
+    cout<<       "(i)   d/dx(sin^(-1)(x))  =  1/sqrt(1-x^2)"<<endl;
+    cout<<       "(i)   d/dx(cos^(-1)(x))  =  (-1)/sqrt(1-x^2)"<<endl;
+    cout<<       "(i)   d/dx(tan^(-1)(x))  =  1/(1+x^2)"<<endl;
+    cout<<       "(i)   d/dx(cot^(-1)(x))  =  (-1)/(1+x^2)"<<endl;
+    cout<<       "(i)   d/dx(sec^(-1)(x))  =  1/x*sqrt(x^2-1)"<<endl;
+    cout<<       "(i)   d/dx(csc^(-1)(x))  =  (-1)/x*sqrt(x^2-1)"<<endl;
 }
 
 

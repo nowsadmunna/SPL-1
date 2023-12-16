@@ -4,13 +4,25 @@ using namespace std;
 bool check_udivv_function(string equation)
 {
     int i;
-    for(i=0;equation[i]!='\0';i++)
+    stack<char>bracket;
+    for(i=0;i<equation.size();i++)
     {
-        if(equation[i]=='/' && equation[i-1]==')' && equation[i+1]=='(')
+        if(equation[i]=='(')
         {
-            return true;
+            bracket.push('(');
         }
-        else
+        else if(equation[i]==')')
+        {
+            bracket.pop();
+        }
+        else if(equation[i]=='/')
+        {
+            if(bracket.size()==0)
+            {
+                return true;
+            }
+        }
+        else 
         {
             continue;
         }
