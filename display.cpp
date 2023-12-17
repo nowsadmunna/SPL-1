@@ -213,7 +213,6 @@ void display()
                     {
                         part=inside_of_bracket(part);
                         part=minimized_answer(part);
-                        part=zero_minimization(part);
                         final_answer+=part;
                         final_answer+=answer[i];
                         part="";
@@ -230,7 +229,6 @@ void display()
             }
             part=inside_of_bracket(part);
             part=minimized_answer(part);
-            part=zero_minimization(part);
             final_answer+=part;
             part="";
             answer="";
