@@ -20,6 +20,7 @@ string removespaces(string equation)
 }
 void display()
 {
+    cout<<endl<<endl<<endl;
     cout<<"                                Welcome to Derivative Calculator"<<endl<<endl<<endl<<endl;
     int choice,i,j;
     stack<char>answer_minimization;
@@ -46,6 +47,7 @@ void display()
             string part;
             cout<<"Enter the equation: ";
             getline(cin,equation);
+            equation=removespaces(equation);
             cout<<endl;
             cout<<"step by step derivative calculation of d/dx("<<equation<<") are given below : "<<endl<<endl<<endl;
             string initial_equation;
@@ -396,8 +398,6 @@ string zero_minimization(string equation)
             if(bracket.size()==0)
             {
                 flag=1;
-                cout<<"x"<<i<<endl;
-                cout<<answer<<endl;
                 if(answer=="0" || answer=="(0)")
                 {
                     return "0";
