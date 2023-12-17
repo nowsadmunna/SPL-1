@@ -26,6 +26,7 @@ void display()
     string equation,answer,final_answer;
     while(1)
     {
+        cout<<endl<<endl<<endl;
         cout<<"                            1. Show Formula"<<endl;
         cout<<"                            2. Input Equation"<<endl;
         cout<<"                            3. Exit"<<endl<<endl;
@@ -45,6 +46,7 @@ void display()
             string part;
             cout<<"Enter the equation: ";
             getline(cin,equation);
+            cout<<endl;
             cout<<"step by step derivative calculation of d/dx("<<equation<<") are given below : "<<endl<<endl<<endl;
             string initial_equation;
             for(i=0;i<equation.size();i++)
@@ -63,7 +65,6 @@ void display()
                 {
                     if(bracket.size()==0)
                     {
-                        //part_by_part.push(part); 
                         initial_equation+="d/dx(";
                         initial_equation+=part;
                         initial_equation+=")";
@@ -208,27 +209,10 @@ void display()
                 {
                     if(answer_minimization.size()==0)
                     {
-                        int flag=0;
                         part=inside_of_bracket(part);
-                        for(j=0;j<part.size();j++)
-                        {
-                            if(part[j]=='*' && part[j+1]=='0')
-                            {
-                                final_answer+="0";
-                                flag=1;
-                                break;
-                            }
-                            else if(part[j]=='*' && part[j+1]=='(' && part[j+2]=='0' && part[j+3]==')')
-                            {
-                                final_answer+="0";
-                                flag=1;
-                                break;
-                            }   
-                        }
-                        if(flag==0)
-                        {
-                            final_answer+=minimized_answer(part);
-                        }
+                        part=minimized_answer(part);
+                        part=zero_minimization(part);
+                        final_answer+=part;
                         final_answer+=answer[i];
                         part="";
                     }
@@ -242,27 +226,10 @@ void display()
                     part+=answer[i];
                 }
             }
-            int flagg=0;
             part=inside_of_bracket(part);
-            for(i=0;i<part.size();i++)
-            {
-                if(part[i]=='*' && part[i+1]=='0')
-                {
-                    final_answer+="0";
-                    flagg=1;
-                    break;
-                }
-                else if(part[i]=='*' && part[i+1]=='(' && part[i+2]=='0' && part[i+3]==')')
-                {
-                    final_answer+="0";
-                    flagg=1;
-                    break;
-                }
-            }
-            if(flagg==0)
-            {
-                final_answer+=minimized_answer(part);
-            }
+            part=minimized_answer(part);
+            part=zero_minimization(part);
+            final_answer+=part;
             part="";
             answer="";
             for(i=0;i<final_answer.size();i++)
@@ -293,7 +260,7 @@ void display()
                     final_answer+=answer[i];
                 }
             }
-           cout<<"          ="<<final_answer<<"     [Answer]"<<endl<<endl<<endl;
+           cout<<"          ="<<final_answer<<endl<<endl<<endl;
         }
         else if(choice==3)
         {
@@ -305,13 +272,12 @@ void display()
             cout<<"                                Enter a valid choice"<<endl;
         }
     }
-    cout<<endl<<endl<<endl;
+    cout<<endl<<endl<<endl<<endl<<endl<<endl;
     cout<<"                                        Thank You"<<endl;
 }
 string initial_checking(string equation)
 {
     string answer_for="";
-    int i;
      if(check_uv_function(equation))
     {
         answer_for+=as_uv_function(equation);
@@ -413,6 +379,106 @@ string minimized_answer(string equation)
         else 
         {
             answer+=equation[i];
+        }
+    }
+    return answer;
+}
+string zero_minimization(string equation)
+{
+    int i,j,flag=0;
+    stack<char>brc;
+    stack<char>bracket;
+    string answer;
+    for(i=0;i<equation.size();i++)
+    {
+        if(equation[i]=='*' && equation[i+1]=='(')
+        {
+            if(bracket.size()==0)
+            {
+                flag=1;
+                cout<<"x"<<i<<endl;
+                cout<<answer<<endl;
+                if(answer=="0" || answer=="(0)")
+                {
+                    return "0";
+                }
+            }
+            else 
+            {
+                answer+=equation[i];
+            }
+        }
+        else if(flag==1)
+        {
+            string new_part;
+            answer+='*';
+            answer+='(';
+            for(int k=i;k<equation.size();k++)
+            {
+                new_part+=equation[k];
+            }
+            new_part=inside_of_bracket(new_part);
+            if(new_part=="0")
+            {
+                return "0";
+            }
+            string part="";
+            string part_answer;
+            for(j=0;j<new_part.size();j++)
+            {
+                if(new_part[j]=='(')
+                {
+                    brc.push('(');
+                    part+='(';
+                }
+                else if(new_part[j]==')')
+                {
+                    brc.pop();
+                    part+=')';
+                }
+                else if(new_part[j]=='+' || new_part[j]=='-')
+                {
+                    if(brc.size()==0)
+                    {
+                        part_answer=zero_minimization(part);
+                        answer+=part_answer;
+                        answer+=new_part[j];
+                        part="";
+                    }
+                    else 
+                    {
+                        part+=new_part[j];
+                    }
+                }
+                else 
+                {
+                    part+=new_part[j];
+
+                }
+            }
+            if(part==new_part)
+            {
+                answer+=part;
+            }
+            else 
+            {
+                part_answer=zero_minimization(part);
+                answer+=part_answer;
+            }
+            answer+=')';
+            return answer;
+        }
+        else 
+        {
+            answer+=equation[i];
+            if(equation[i]=='(')
+            {
+                bracket.push('(');
+            }
+            else if(equation[i]==')')
+            {
+                bracket.pop();
+            }
         }
     }
     return answer;
